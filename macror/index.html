@@ -498,9 +498,23 @@
             }
         </div>
 
+        <!-- Quick Dashboard Route Selectors -->
+        <div style="margin-top: 2rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; gap: 1rem;">
+            <div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: #ffffff;">Direct Cluster Navigation</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Access specific dashboard panels directly via deep-links:</div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="/macror/#accounts" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.4rem 0.75rem;">#accounts</a>
+                <a href="/macror/#instances" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.4rem 0.75rem;">#instances</a>
+                <a href="/macror/#settings" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.4rem 0.75rem;">#settings</a>
+                <a href="/macror/#journal" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.4rem 0.75rem;">#journal</a>
+            </div>
+        </div>
+
         <!-- Footer -->
-        <footer>
-            <div>© 2026 Avinash Poudel (@shroudbean) • Macro R Clean-Room Architecture</div>
+        <footer style="margin-top: 3rem;">
+            <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Macro R Clean-Room Architecture</div>
             <div style="display: flex; gap: 1rem;">
                 <a href="/">Portfolio</a>
                 <a href="http://100.75.83.10:8199/" target="_blank">Cluster</a>
@@ -508,5 +522,23 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        (function() {
+            function checkHash() {
+                var hash = (window.location.hash || '').toLowerCase();
+                var validViews = ['#accounts', '#instances', '#settings', '#journal', '#overview'];
+                for (var i = 0; i < validViews.length; i++) {
+                    if (hash === validViews[i] || hash.indexOf(validViews[i]) === 0) {
+                        var target = 'http://100.75.83.10:8199/' + hash;
+                        window.location.replace(target);
+                        return;
+                    }
+                }
+            }
+            checkHash();
+            window.addEventListener('hashchange', checkHash);
+        })();
+    </script>
 </body>
 </html>
