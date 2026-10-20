@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Macro R — Autonomous Microsoft Rewards Engine</title>
+    <meta name="description" content="Clean-room Microsoft Rewards automation engine written in pure Go. Driven directly over Chrome DevTools Protocol (CDP) with seed-derived human pacing and multi-node Azure VM isolation.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #07090e;
+            --surface: rgba(15, 17, 24, 0.75);
+            --surface-hover: rgba(22, 25, 36, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --text-primary: #f4f4f7;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-orange: #f97316;
+            --accent-orange-dark: #ea580c;
+            --accent-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+            --accent-gradient-hover: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
+            --accent-glow: rgba(249, 115, 22, 0.35);
+            --mono-font: 'JetBrains Mono', monospace;
+            --sans-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.14), transparent 70%),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(59, 130, 246, 0.05), transparent 60%);
+            color: var(--text-primary);
+            font-family: var(--sans-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem 6rem;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .nav-back:hover {
+            color: #ffffff;
+        }
+
+        .cluster-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #34d399;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            font-family: var(--mono-font);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 10px #34d399;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(0.9); }
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 4rem;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 60%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(251, 146, 60, 0.35);
+        }
+
+        .logo-box svg {
+            width: 22px;
+            height: 22px;
+            fill: #ffffff;
+            stroke: #ffffff;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.8rem 1.4rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border: 1px solid rgba(251, 146, 60, 0.35);
+            box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gradient-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px -5px rgba(234, 88, 12, 0.55);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: var(--border-hover);
+            color: #ffffff;
+        }
+
+        /* Pillars Grid */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 4rem;
+        }
+
+        .pillar-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            background: var(--surface-hover);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f97316 0%, #ea580c 50%, #f59e0b 100%);
+            opacity: 0.6;
+        }
+
+        .pillar-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .pillar-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Architecture Details */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--mono-font);
+            font-size: 0.82rem;
+            margin-bottom: 4rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .spec-table th, .spec-table td {
+            padding: 0.9rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .spec-table th {
+            background: rgba(255, 255, 255, 0.03);
+            color: #9ca3af;
+            font-weight: 600;
+        }
+
+        .spec-table td {
+            color: #e5e7eb;
+        }
+
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: #fb923c;
+            font-weight: 500;
+        }
+
+        /* Code block */
+        .code-container {
+            background: #050609;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-family: var(--mono-font);
+            font-size: 0.82rem;
+            color: #d1d5db;
+            overflow-x: auto;
+            margin-bottom: 4rem;
+        }
+
+        .code-comment { color: #6b7280; }
+        .code-keyword { color: #fb923c; }
+        .code-string { color: #34d399; }
+
+        /* Footer */
+        footer {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--mono-font);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.15rem; }
+            body { padding: 1.5rem 1rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Nav -->
+        <nav>
+            <a href="/" class="nav-back">
+                ← <span>Back to Avinash Poudel</span>
+            </a>
+            <div class="cluster-status">
+                <span class="status-dot"></span>
+                <span>Active Cluster • Azure Node</span>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="brand-badge">
+                <div class="logo-box">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <div style="font-family: var(--mono-font); font-size: 0.85rem; color: #fb923c; font-weight: 600;">
+                    MACRO R ARCHITECTURE
+                </div>
+            </div>
+
+            <h1 class="hero-title">
+                Autonomous Microsoft Rewards <span>Stealth Engine</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                A clean-room Go rewrite engineered from specification. Communicates directly with Chromium over the Chrome DevTools Protocol (CDP), mathematically deriving all actions, typing physics, and delays from account-specific seeds without Selenium, Puppeteer, or shared bot heuristics.
+            </p>
+
+            <div class="hero-actions">
+                <a href="http://100.75.83.10:8199/" target="_blank" rel="noopener" class="btn btn-primary">
+                    <span>Launch Live Cluster Gateway</span> ↗
+                </a>
+                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <span>Repository & Specs</span> ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- Core Architectural Pillars -->
+        <h2 class="section-title">Architectural Principles</h2>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">🧬</div>
+                <div class="pillar-title">Seed-Derived Entropy</div>
+                <div class="pillar-desc">
+                    Every delay, task order, keystroke interval, and session window derives deterministically from the installation and account seed. Zero shared constants exist across accounts, preventing behavioral clustering.
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon">⚡</div>
+                <div class="pillar-title">Pure Go • Zero Driver Overhead</div>
+                <div class="pillar-desc">
+                    No Node, npm, cgo, or Selenium webdrivers. Compiles to a single static binary running on low-resource Azure B1s (1 vCPU, 1GB RAM) nodes with minimal CPU and memory footprints.
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon">🖥️</div>
+                <div class="pillar-title">Real Display over Xvfb</div>
+                <div class="pillar-desc">
+                    Refuses detection-vulnerable <code>--headless</code> flags. Operates an authentic Chromium window under a virtual X11 framebuffer with integrated private noVNC streaming for live human oversight.
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon">🛡️</div>
+                <div class="pillar-title">Zero-CAPTCHA Safety Engine</div>
+                <div class="pillar-desc">
+                    Permanently out of scope: solving CAPTCHAs or bypassing risk flags. On detection of any safety signal, Macro R records the telemetry and safely enters risk pauses to protect account standing.
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon">☁️</div>
+                <div class="pillar-title">Multi-Tenant Azure Cloud Mesh</div>
+                <div class="pillar-desc">
+                    Automated CLI provisioner that deploys dedicated Azure VMs per friend/account. Fronted by a salted SHA-256 reverse proxy gateway that isolates environments completely.
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon">📈</div>
+                <div class="pillar-title">Progressive Warm-Up</div>
+                <div class="pillar-desc">
+                    New accounts gradually scale search point targets over a multi-day ramp schedule, mimicking natural human onboarding patterns rather than hitting daily maximums immediately.
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specification Matrix -->
+        <h2 class="section-title">Technical Specifications</h2>
+        <table class="spec-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Implementation Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="spec-label">Language & Toolchain</td>
+                    <td>Go 1.24+ (Strict <code>CGO_ENABLED=0</code> static compilation)</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Browser Interface</td>
+                    <td>Chrome DevTools Protocol (CDP) direct WebSocket JSON-RPC</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Display Server</td>
+                    <td>Xvfb virtual display (:99) + x11vnc + websockify (noVNC)</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Host Footprint</td>
+                    <td>Azure B1s instance (1 vCPU, 1 GB RAM, Ubuntu 22.04 LTS)</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Authentication Portal</td>
+                    <td>Custom Go Reverse Proxy Gateway with salted SHA-256 session vault</td>
+                </tr>
+                <tr>
+                    <td class="spec-label">Stealth Selftest</td>
+                    <td>100/100 public detection score across CreepJS and Cloudflare signals</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Code Snippet -->
+        <h2 class="section-title">Clean-Room Design Pattern</h2>
+        <div class="code-container">
+            <span class="code-comment">// Clean-room seed-derived pacing: all browser-observable pauses derive from account seed</span><br>
+            <span class="code-keyword">type</span> PaceController <span class="code-keyword">struct</span> {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;accountSeed [32]<span class="code-keyword">byte</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;entropyPRNG *rand.Rand<br>
+            }<br><br>
+            <span class="code-comment">// Zero shared constants ensure no two Macro R installations exhibit matching timing</span><br>
+            <span class="code-keyword">func</span> (p *PaceController) KeystrokeDelay() time.Duration {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;base := p.entropyPRNG.Float64()*45.0 + 35.0 <span class="code-comment">// 35ms - 80ms human variance</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> time.Duration(base) * time.Millisecond<br>
+            }
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>© 2026 Avinash Poudel (@shroudbean) • Macro R Clean-Room Architecture</div>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/">Portfolio</a>
+                <a href="http://100.75.83.10:8199/" target="_blank">Cluster</a>
+                <a href="https://github.com/shroudbean" target="_blank">GitHub</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
