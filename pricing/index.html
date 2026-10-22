@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans & Pricing • Macro R Stealth Fleet</title>
+    <meta name="description" content="Flexible monthly subscription tiers in NPR for Macro R stealth Microsoft Rewards automation with human typing variance and zero datacenter IP bans.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #090d16;
+            --bg-surface: #0f172a;
+            --bg-elevated: #1e293b;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(249, 115, 22, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #94a3b8;
+            --accent-orange: #f97316;
+            --accent-amber: #fbbf24;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --mono-font: 'JetBrains Mono', monospace;
+            --sans-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--sans-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 10% 30%, rgba(6, 182, 212, 0.04) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            width: 100%;
+        }
+
+        /* Navigation Header */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 3.5rem;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--mono-font);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-badge {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .btn-sm-primary {
+            background: rgba(249, 115, 22, 0.12);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            padding: 0.45rem 0.9rem;
+            border-radius: 0.45rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .btn-sm-primary:hover {
+            background: rgba(249, 115, 22, 0.22);
+            border-color: rgba(249, 115, 22, 0.6);
+            color: #ffedd5;
+        }
+
+        /* Page Intro */
+        .page-header {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .header-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono-font);
+            font-size: 0.78rem;
+            color: var(--accent-orange);
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1.1rem;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, #fff 30%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 1rem;
+            padding: 2rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .pricing-top {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .plan-badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.9rem;
+            min-height: 24px;
+        }
+
+        .plan-tag {
+            font-family: var(--mono-font);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.35rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: #d1d5db;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .plan-tag.server {
+            background: rgba(6, 182, 212, 0.12);
+            color: #67e8f9;
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .plan-tag.unlimited {
+            background: rgba(168, 85, 247, 0.12);
+            color: #d8b4fe;
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .plan-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .plan-price-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .plan-currency {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .plan-price {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #fff;
+            font-family: var(--mono-font);
+            letter-spacing: -0.03em;
+        }
+
+        .plan-period {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .plan-cap-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--mono-font);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fb923c;
+            background: rgba(249, 115, 22, 0.08);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            padding: 0.35rem 0.7rem;
+            border-radius: 0.45rem;
+            width: 100%;
+        }
+
+        .plan-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.88rem;
+            color: #d1d5db;
+            line-height: 1.45;
+        }
+
+        .plan-features-list svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--accent-emerald);
+            stroke-width: 2.5;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .btn-plan {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.55rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .btn-plan-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-plan-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-plan-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-plan-primary:hover {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.45);
+        }
+
+        /* FAQ / Guarantees Section */
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .guarantee-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 0.75rem;
+            padding: 1.4rem;
+        }
+
+        .guarantee-title {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-family: var(--mono-font);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.25rem 1rem 3rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <a href="/" class="brand-link">
+                <span class="brand-badge">MACRO R</span>
+                <span>// FLEET PRICING</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">&larr; Portfolio</a>
+                <a href="/macror" class="nav-link">Architecture (/macror)</a>
+                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn-sm-primary">
+                    <span>Live Gateway</span> &nearr;
+                </a>
+            </div>
+        </nav>
+
+        <!-- Page Intro Header -->
+        <header class="page-header">
+            <div class="header-tag">
+                <span>⚡</span>
+                <span>Nepal Pricing (NPR) &bull; Monthly Fleet Capacity</span>
+            </div>
+            <h1 class="page-title">
+                Automated Rewards <span>Fleet Plans</span>
+            </h1>
+            <p class="page-subtitle">
+                Select your automation scale. Every tier includes seed-derived human typing variance, residential Tailscale routing (zero datacenter detection), and isolated profile sandboxing.
+            </p>
+        </header>
+
+        <!-- 4-Tier Pricing Grid -->
+        <div class="pricing-grid" id="pricingGrid">
+            <!-- Tier 1: Starter -->
+            <div class="pricing-card" data-plan="starter">
+                <div class="pricing-top">
+                    <div class="plan-badge-row">
+                        <span class="plan-tag">Shared Cloud</span>
+                    </div>
+                    <h3 class="plan-name">Starter Automation</h3>
+                    <div class="plan-price-wrap">
+                        <span class="plan-currency">रु</span>
+                        <span class="plan-price" data-field="price">750</span>
+                        <span class="plan-period">/ month</span>
+                    </div>
+                    <div class="plan-cap-pill">
+                        <span>🛡️</span>
+                        <span data-field="limit">10 Accounts Included</span>
+                    </div>
+                </div>
+
+                <ul class="plan-features-list" data-field="features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>10 Microsoft Rewards Accounts</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Desktop + Mobile Automated Searches</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Read to Earn (MSN News) Automation</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Daily Sets, Streaks &amp; Bonus Cards</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Residential Tailscale Routing (Zero DC Flag)</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Web Operations Dashboard Access</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/9779819082260?text=Hi%20Avinash,%20I%20would%20like%20to%20subscribe%20to%20Macro%20R%20Starter%20Plan%20(750%20NPR)%20for%2010%20accounts." target="_blank" rel="noopener" class="btn-plan btn-plan-secondary">
+                    <span>Subscribe Starter</span> &rarr;
+                </a>
+            </div>
+
+            <!-- Tier 2: Pro (Clean, No Most Popular) -->
+            <div class="pricing-card" data-plan="pro">
+                <div class="pricing-top">
+                    <div class="plan-badge-row">
+                        <span class="plan-tag">Multi-Account</span>
+                    </div>
+                    <h3 class="plan-name">Pro Automation</h3>
+                    <div class="plan-price-wrap">
+                        <span class="plan-currency">रु</span>
+                        <span class="plan-price" data-field="price">1,500</span>
+                        <span class="plan-period">/ month</span>
+                    </div>
+                    <div class="plan-cap-pill">
+                        <span>⚡</span>
+                        <span data-field="limit">20 Accounts Total (+10 Slots)</span>
+                    </div>
+                </div>
+
+                <ul class="plan-features-list" data-field="features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>20 Accounts Total (+10 Extra Slots)</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Everything in Starter Plan</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Priority Search Queue Scheduling</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Instant Telegram / Webhook Alerts</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Automated Risk Pause &amp; Halt Safeguards</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Detailed Streak History &amp; Metrics</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/9779819082260?text=Hi%20Avinash,%20I%20would%20like%20to%20subscribe%20to%20Macro%20R%20Pro%20Plan%20(1,500%20NPR)%20for%2020%20accounts." target="_blank" rel="noopener" class="btn-plan btn-plan-primary">
+                    <span>Subscribe Pro</span> &rarr;
+                </a>
+            </div>
+
+            <!-- Tier 3: Dedicated Node -->
+            <div class="pricing-card" data-plan="dedicated">
+                <div class="pricing-top">
+                    <div class="plan-badge-row">
+                        <span class="plan-tag server">Zero Queue Waiting</span>
+                    </div>
+                    <h3 class="plan-name">Dedicated Server Node</h3>
+                    <div class="plan-price-wrap">
+                        <span class="plan-currency">रु</span>
+                        <span class="plan-price" data-field="price">2,500</span>
+                        <span class="plan-period">/ month</span>
+                    </div>
+                    <div class="plan-cap-pill">
+                        <span>🖥️</span>
+                        <span data-field="limit">30 Accounts Total (+20 Slots)</span>
+                    </div>
+                </div>
+
+                <ul class="plan-features-list" data-field="features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>30 Accounts Total (+20 Extra Slots)</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Dedicated Isolated VM Instance (Zero Wait)</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Dedicated noVNC Live Screen Port</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Private Isolated Chromium Profiles</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Everything in Pro Plan</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/9779819082260?text=Hi%20Avinash,%20I%20would%20like%20to%20subscribe%20to%20Macro%20R%20Dedicated%20Server%20Node%20(2,500%20NPR)%20for%2030%20accounts." target="_blank" rel="noopener" class="btn-plan btn-plan-secondary">
+                    <span>Deploy Dedicated Node</span> &rarr;
+                </a>
+            </div>
+
+            <!-- Tier 4: Enterprise Fleet -->
+            <div class="pricing-card" data-plan="enterprise">
+                <div class="pricing-top">
+                    <div class="plan-badge-row">
+                        <span class="plan-tag unlimited">Unlimited Scale</span>
+                    </div>
+                    <h3 class="plan-name">Enterprise Fleet</h3>
+                    <div class="plan-price-wrap">
+                        <span class="plan-currency">रु</span>
+                        <span class="plan-price" data-field="price">4,000</span>
+                        <span class="plan-period">/ month</span>
+                    </div>
+                    <div class="plan-cap-pill">
+                        <span>🚀</span>
+                        <span data-field="limit">Unlimited Accounts (Zero Cap)</span>
+                    </div>
+                </div>
+
+                <ul class="plan-features-list" data-field="features">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Unlimited Accounts (No Capping)</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Dedicated Multi-Core High Performance Cluster</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Zero Queue Waiting &amp; Dedicated noVNC</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Custom Human Seed Pacing &amp; Schedules</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>24/7 VIP Priority Setup &amp; Direct Support</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Everything on All Other Plans</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/9779819082260?text=Hi%20Avinash,%20I%20would%20like%20to%20subscribe%20to%20Macro%20R%20Enterprise%20Fleet%20(4,000%20NPR)%20with%20unlimited%20accounts." target="_blank" rel="noopener" class="btn-plan btn-plan-secondary">
+                    <span>Contact for Fleet</span> &rarr;
+                </a>
+            </div>
+        </div>
+
+        <!-- Architectural Guarantees -->
+        <div class="guarantees-grid">
+            <div class="guarantee-card">
+                <div class="guarantee-title">
+                    <span>🧬</span> Seed-Derived Human Variance
+                </div>
+                <div class="guarantee-desc">
+                    Every delay, task order, keystroke interval, and session window derives deterministically from each account's installation seed. Zero shared timers exist.
+                </div>
+            </div>
+
+            <div class="guarantee-card">
+                <div class="guarantee-title">
+                    <span>🌐</span> Residential Exit Node Routing
+                </div>
+                <div class="guarantee-desc">
+                    All browser sessions egress through private residential Tailscale exit nodes, completely avoiding Microsoft datacenter IP classification and risk flags.
+                </div>
+            </div>
+
+            <div class="guarantee-card">
+                <div class="guarantee-title">
+                    <span>🛑</span> Zero CAPTCHA Solving Safety
+                </div>
+                <div class="guarantee-desc">
+                    Never uses shady AI/third-party CAPTCHA solvers. Upon detecting any risk signal, Macro R records the state, safely halts, and notifies the operator.
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            Macro R Stealth Automation Engine &bull; Biratnagar, Nepal &bull; <a href="mailto:mail@avinashpoudel.com.np" style="color: #fb923c; text-decoration: none;">mail@avinashpoudel.com.np</a>
+        </footer>
+    </div>
+
+    <!-- Live Dynamic Price Sync from Gateway API -->
+    <script>
+        (async function syncPricing() {
+            try {
+                // Try fetching live rates from gateway API
+                const apiUrl = window.location.hostname.includes('rewards.') 
+                    ? '/api/pricing' 
+                    : 'https://rewards.avinashpoudel.com.np/api/pricing';
+                const res = await fetch(apiUrl, { mode: 'cors' });
+                if (!res.ok) return;
+                const plans = await res.json();
+                
+                plans.forEach(plan => {
+                    const card = document.querySelector(`.pricing-card[data-plan="${plan.id}"]`);
+                    if (!card) return;
+                    
+                    const priceEl = card.querySelector('[data-field="price"]');
+                    if (priceEl && plan.price_npr) {
+                        priceEl.textContent = Number(plan.price_npr).toLocaleString();
+                    }
+                    
+                    const limitEl = card.querySelector('[data-field="limit"]');
+                    if (limitEl && plan.account_limit !== undefined) {
+                        limitEl.textContent = plan.account_limit === 0 
+                            ? 'Unlimited Accounts (Zero Cap)' 
+                            : `${plan.account_limit} Accounts Limit`;
+                    }
+                });
+            } catch (e) {
+                // Keep default HTML fallback
+            }
+        })();
+    </script>
+</body>
+</html>
