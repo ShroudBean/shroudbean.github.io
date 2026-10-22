@@ -9,7 +9,7 @@ git remote add origin https://shroudbean@github.com/shroudbean/shroudbean.github
 git branch -M main
 
 Write-Host "Authenticating with GitHub as @shroudbean..." -ForegroundColor Yellow
-git push -u origin main
+git push -u origin main --force
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`nSUCCESS! Portfolio pushed to GitHub." -ForegroundColor Green
