@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
     <title>Avinash Poudel — Builder &amp; Creator of Macro R</title>
     <meta name="description" content="Official website of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R, autonomous bots, and systems co-coded with Antigravity.">
     <meta name="keywords" content="Avinash Poudel, Avinash Poudel Nepal, shroudbean, its_infyavi, Macro R, Avinash Poudel Biratnagar">
@@ -80,10 +80,10 @@
     <style>
         :root {
             --bg: #06070a;
-            --surface: rgba(14, 17, 26, 0.75);
-            --surface-hover: rgba(20, 24, 38, 0.85);
+            --surface: rgba(14, 17, 26, 0.78);
+            --surface-hover: rgba(20, 24, 38, 0.9);
             --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(249, 115, 22, 0.4);
+            --border-hover: rgba(249, 115, 22, 0.45);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --text-dim: #64748b;
@@ -99,12 +99,19 @@
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
         }
 
         body {
             background-color: var(--bg);
             background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 115, 22, 0.15), transparent 60%),
+                radial-gradient(ellipse 90% 50% at 50% -10%, rgba(249, 115, 22, 0.16), transparent 60%),
                 radial-gradient(ellipse 50% 30% at 90% 20%, rgba(59, 130, 246, 0.05), transparent 50%),
                 radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 28px 28px;
@@ -112,12 +119,13 @@
             font-family: var(--sans);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 1.5rem 1.25rem 6rem;
+            padding: 1.25rem 1.25rem 5rem;
         }
 
         .container {
             max-width: 760px;
             margin: 0 auto;
+            width: 100%;
         }
 
         /* Floating Island Navbar */
@@ -125,16 +133,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(12, 14, 22, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(12, 14, 22, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border);
-            padding: 0.55rem 1rem 0.55rem 0.75rem;
+            padding: 0.5rem 0.85rem;
             border-radius: 9999px;
-            margin-bottom: 3.5rem;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            margin-bottom: 3.25rem;
+            box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
             position: sticky;
-            top: 1rem;
+            top: 0.85rem;
             z-index: 50;
         }
 
@@ -144,6 +152,7 @@
             gap: 0.65rem;
             text-decoration: none;
             color: #ffffff;
+            shrink: 0;
         }
 
         .logo-mark {
@@ -160,6 +169,7 @@
             color: #ffffff;
             box-shadow: 0 0 14px rgba(249, 115, 22, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.25);
+            flex-shrink: 0;
         }
 
         .nav-brand-text {
@@ -167,12 +177,13 @@
             font-weight: 700;
             color: #ffffff;
             letter-spacing: -0.01em;
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.5rem;
         }
 
         .nav-item {
@@ -180,19 +191,20 @@
             text-decoration: none;
             font-size: 0.82rem;
             font-weight: 500;
-            padding: 0.3rem 0.65rem;
+            padding: 0.35rem 0.65rem;
             border-radius: 9999px;
             transition: all 0.15s ease;
+            white-space: nowrap;
         }
 
         .nav-item:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Hero */
         .hero {
-            margin-bottom: 3.5rem;
+            margin-bottom: 3.25rem;
             position: relative;
         }
 
@@ -238,20 +250,22 @@
             align-items: center;
             gap: 0.85rem;
             flex-wrap: wrap;
-            margin-bottom: 2.25rem;
+            margin-bottom: 2rem;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             font-size: 0.86rem;
             font-weight: 600;
-            padding: 0.65rem 1.25rem;
-            border-radius: 0.7rem;
+            padding: 0.68rem 1.25rem;
+            border-radius: 0.75rem;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
         }
 
         .btn-glow {
@@ -298,10 +312,11 @@
             color: var(--text-muted);
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.55rem;
             text-decoration: none;
             transition: all 0.15s ease;
+            white-space: nowrap;
         }
 
         .social-pill:hover {
@@ -315,22 +330,27 @@
             width: 14px;
             height: 14px;
             fill: currentColor;
-            opacity: 0.8;
+            opacity: 0.85;
+            flex-shrink: 0;
         }
 
-        /* 4-Highlights Grid (Cool & Honest) */
+        .email-short {
+            display: none;
+        }
+
+        /* 3-Highlights Grid (Cool & Honest) */
         .highlights-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 0.85rem;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3.25rem;
         }
 
         .highlight-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 0.85rem;
-            padding: 1.15rem;
+            border-radius: 0.95rem;
+            padding: 1.25rem;
             transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
@@ -356,7 +376,7 @@
         }
 
         .card-subtext {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             line-height: 1.5;
         }
@@ -378,19 +398,19 @@
 
         /* Featured Flagship Card (Macro R) */
         .flagship-box {
-            background: linear-gradient(180deg, rgba(249, 115, 22, 0.07) 0%, rgba(14, 17, 26, 0.9) 100%);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            border-radius: 1.1rem;
+            background: linear-gradient(180deg, rgba(249, 115, 22, 0.08) 0%, rgba(14, 17, 26, 0.92) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.32);
+            border-radius: 1.15rem;
             padding: 1.85rem;
             margin-bottom: 1.5rem;
             position: relative;
-            box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
             transition: all 0.2s ease;
         }
 
         .flagship-box:hover {
-            border-color: rgba(249, 115, 22, 0.5);
-            box-shadow: 0 16px 45px -10px rgba(249, 115, 22, 0.15);
+            border-color: rgba(249, 115, 22, 0.55);
+            box-shadow: 0 16px 45px -10px rgba(249, 115, 22, 0.2);
         }
 
         .flagship-header {
@@ -437,17 +457,17 @@
         }
 
         .fleet-pricing-ribbon {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 0.65rem;
-            padding: 0.75rem 1rem;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 0.75rem;
+            padding: 0.85rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.65rem;
             font-size: 0.82rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.35rem;
         }
 
         .fleet-pricing-ribbon strong {
@@ -458,11 +478,15 @@
             color: var(--orange-bright);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
         }
 
         .fleet-pricing-ribbon a:hover {
             text-decoration: underline;
+        }
+
+        .pricing-chips {
+            display: inline;
         }
 
         .actions-row {
@@ -477,7 +501,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3.25rem;
         }
 
         .project-card {
@@ -525,24 +549,26 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 3.5rem;
+            margin-bottom: 3.25rem;
         }
 
         .chiya-btn {
             background: var(--orange-gradient);
             color: #ffffff;
             border: 1px solid rgba(251, 146, 60, 0.4);
-            padding: 0.55rem 1.15rem;
-            border-radius: 0.6rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 0.65rem;
             font-family: var(--sans);
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .chiya-btn:hover {
@@ -555,8 +581,8 @@
         }
 
         .chiya-counter {
-            background: rgba(0, 0, 0, 0.35);
-            padding: 0.1rem 0.45rem;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.15rem 0.5rem;
             border-radius: 9999px;
             font-family: var(--mono);
             font-size: 0.75rem;
@@ -586,11 +612,227 @@
             color: #ffffff;
         }
 
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           MOBILE / PHONES VIEW OPTIMIZATIONS (iPhone, Android, Samsung, Pixel)
+           ========================================================================== */
         @media (max-width: 640px) {
-            .hero h1 { font-size: 2.25rem; }
-            .nav-island { padding: 0.45rem 0.75rem; }
-            .flagship-box { padding: 1.25rem; }
-            .chiya-dock { flex-direction: column; align-items: flex-start; }
+            body {
+                padding: 0.85rem 0.85rem 4rem;
+            }
+
+            /* Ultra-Compact Island Nav (Never wraps, never cuts off) */
+            .nav-island {
+                top: 0.5rem;
+                margin-bottom: 2rem;
+                padding: 0.35rem 0.5rem;
+            }
+
+            .nav-brand-text {
+                display: none; /* Icon mark AP saves 100px so all 4 links fit cleanly */
+            }
+
+            .logo-mark {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 0.2rem;
+            }
+
+            .nav-item {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* Hero adjustments */
+            .hero {
+                margin-bottom: 2.25rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: -0.03em;
+                line-height: 1.15;
+            }
+
+            .hero-lead {
+                font-size: 1.02rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+
+            .hero-body {
+                font-size: 0.88rem;
+                line-height: 1.65;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Full-width thumb-accessible buttons on phones */
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.65rem;
+                margin-bottom: 1.75rem;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.88rem;
+            }
+
+            /* Social Dock: 3-column structured grid instead of ragged wrap */
+            .social-dock {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.45rem;
+                padding-top: 1.25rem;
+            }
+
+            .social-pill {
+                justify-content: center;
+                padding: 0.45rem 0.4rem;
+                font-size: 0.72rem;
+            }
+
+            .email-full {
+                display: none;
+            }
+
+            .email-short {
+                display: inline;
+            }
+
+            /* Highlights Grid: Single column with tight spacing */
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                margin-bottom: 2.25rem;
+            }
+
+            .highlight-card {
+                padding: 1.05rem;
+            }
+
+            /* Flagship Box: Mobile padding and stacked pricing */
+            .flagship-box {
+                padding: 1.35rem 1.1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .flagship-title {
+                font-size: 1.25rem;
+            }
+
+            .flagship-subtitle {
+                font-size: 0.82rem;
+            }
+
+            .flagship-desc {
+                font-size: 0.86rem;
+                line-height: 1.6;
+                margin-bottom: 1.15rem;
+            }
+
+            .fleet-pricing-ribbon {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.65rem;
+                padding: 0.85rem;
+                font-size: 0.8rem;
+            }
+
+            .pricing-chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.35rem;
+                margin-top: 0.35rem;
+            }
+
+            .pricing-chip {
+                background: rgba(255, 255, 255, 0.06);
+                padding: 0.15rem 0.45rem;
+                border-radius: 0.35rem;
+                font-family: var(--mono);
+                font-size: 0.72rem;
+            }
+
+            .actions-row {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.65rem;
+            }
+
+            .actions-row .btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.88rem;
+            }
+
+            /* Project Rows */
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+                margin-bottom: 2.25rem;
+            }
+
+            .project-card {
+                padding: 1.15rem 1rem;
+            }
+
+            /* Chiya Dock */
+            .chiya-dock {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.95rem;
+                padding: 1.25rem 1rem;
+                margin-bottom: 2.25rem;
+            }
+
+            .chiya-btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                font-size: 0.88rem;
+            }
+
+            /* Footer */
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.85rem;
+                padding-top: 1.5rem;
+                font-size: 0.76rem;
+            }
+
+            .footer-links {
+                justify-content: center;
+                gap: 0.85rem;
+            }
+        }
+
+        /* Extra small phones (iPhone SE 1st gen, Galaxy Fold outer screen < 360px) */
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.95rem;
+            }
+
+            .social-dock {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-item {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.35rem;
+            }
         }
     </style>
 </head>
@@ -598,7 +840,7 @@
     <div class="container">
         <!-- Floating Island Nav -->
         <nav class="nav-island">
-            <a href="/" class="nav-brand">
+            <a href="/" class="nav-brand" title="Avinash Poudel">
                 <div class="logo-mark">AP</div>
                 <span class="nav-brand-text">Avinash Poudel</span>
             </a>
@@ -634,33 +876,35 @@
 
             <!-- Social Dock with Icons -->
             <div class="social-dock">
-                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="social-pill">
+                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="social-pill" title="GitHub Profile">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>GitHub</span> ↗
                 </a>
-                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="social-pill">
+                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="social-pill" title="LinkedIn Profile">
                     <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     <span>LinkedIn</span> ↗
                 </a>
-                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="social-pill">
+                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="social-pill" title="X Profile">
                     <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     <span>X</span> ↗
                 </a>
-                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="social-pill">
+                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="social-pill" title="Dev.to Articles">
                     <svg viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.12-.46-.19-.84-.19H5.2v4.28h1.38c.38 0 .66-.07.84-.2.18-.13.27-.37.27-.72v-2.45c0-.36-.09-.59-.27-.72zM0 4.8v14.4C0 20.4 1.6 22 3.6 22h16.8c2 0 3.6-1.6 3.6-3.6V4.8C24 3.6 22.4 2 20.4 2H3.6C1.6 2 0 3.6 0 4.8zm7.3 11.51c-.63.42-1.5.63-2.61.63H2.8V7.06h1.91c1.1 0 1.98.21 2.61.63.63.42.95 1.12.95 2.1v2.59c0 .98-.32 1.68-.97 2.1zm5.13-1.07h-2.57v-2.12h2.57V9.75h-2.57V7.06h3.45V5.2H7.95v13.6h5.36v-1.86h-.88v-1.66zm6.77-5.04l-1.92 5.86h-1.89l-1.92-5.86h1.95l.95 3.42.95-3.42h1.88z"/></svg>
                     <span>Dev.to</span> ↗
                 </a>
-                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="social-pill" title="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     <span>Instagram</span> ↗
                 </a>
-                <a href="mailto:mail@avinashpoudel.com.np" class="social-pill">
-                    <span>mail@avinashpoudel.com.np</span>
+                <a href="mailto:mail@avinashpoudel.com.np" class="social-pill" title="Email Avinash">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span class="email-full">mail@avinashpoudel.com.np</span>
+                    <span class="email-short">Email</span>
                 </a>
             </div>
         </header>
 
-        <!-- 4-Card Highlights Grid (Modern & Authentic) -->
+        <!-- 3-Card Highlights Grid (Modern & Authentic) -->
         <div class="highlights-grid">
             <div class="highlight-card">
                 <span class="card-icon">🛸</span>
@@ -705,7 +949,13 @@
 
                 <div class="fleet-pricing-ribbon">
                     <div>
-                        Nepal Subscriptions: <strong>750 NPR</strong> (Starter) &bull; <strong>1,500 NPR</strong> (Pro) &bull; <strong>2,500 NPR</strong> (Dedicated) &bull; <strong>4,000 NPR</strong> (Fleet)
+                        <span>Nepal Subscriptions:</span>
+                        <div class="pricing-chips">
+                            <span class="pricing-chip"><strong>750 NPR</strong> Starter</span>
+                            <span class="pricing-chip"><strong>1,500 NPR</strong> Pro</span>
+                            <span class="pricing-chip"><strong>2,500 NPR</strong> Dedicated</span>
+                            <span class="pricing-chip"><strong>4,000 NPR</strong> Fleet</span>
+                        </div>
                     </div>
                     <a href="/pricing">View All Plans &rarr;</a>
                 </div>
@@ -755,7 +1005,7 @@
         <!-- Sleek Footer -->
         <footer>
             <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Biratnagar, Nepal</div>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="footer-links">
                 <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener">Macro R ↗</a>
                 <a href="/pricing">Pricing</a>
                 <a href="https://github.com/shroudbean" target="_blank" rel="noopener">GitHub</a>
