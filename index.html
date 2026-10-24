@@ -1,31 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Avinash Poudel — Builder &amp; Creator of Macro R</title>
-    <meta name="description" content="Official website of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R, autonomous bots, and systems co-coded with Antigravity.">
+    <meta name="description" content="Official workspace & portfolio of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R and autonomous systems.">
     <meta name="keywords" content="Avinash Poudel, Avinash Poudel Nepal, shroudbean, its_infyavi, Macro R, Avinash Poudel Biratnagar">
     <meta name="author" content="Avinash Poudel">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://avinashpoudel.com.np/">
-    <meta name="theme-color" content="#06070a">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="profile">
-    <meta property="og:site_name" content="Avinash Poudel">
-    <meta property="og:title" content="Avinash Poudel — Builder &amp; Creator of Macro R">
-    <meta property="og:description" content="Official website of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R.">
-    <meta property="og:url" content="https://avinashpoudel.com.np/">
-    <meta property="profile:first_name" content="Avinash">
-    <meta property="profile:last_name" content="Poudel">
-    <meta property="profile:username" content="shroudbean">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Avinash Poudel (@shroudbean)">
-    <meta name="twitter:description" content="Official website of Avinash Poudel. Creator of Macro R.">
-    <meta name="twitter:creator" content="@shroudbean">
+    <meta name="theme-color" content="#090a0f">
 
     <!-- Schema.org JSON-LD Structured Data for Google Knowledge Graph -->
     <script type="application/ld+json">
@@ -73,702 +57,571 @@
     }
     </script>
 
+    <!-- Tailwind CSS & Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              macror: {
+                bg: '#090a0f',
+                sidebar: '#0d0f17',
+                panel: '#12141e',
+                subpanel: '#171926',
+                border: '#1f2334',
+                orange: '#f97316',
+                accent: '#ea580c',
+              }
+            }
+          }
+        }
+      }
+    </script>
 
     <style>
-        :root {
-            --bg: #06070a;
-            --surface: rgba(14, 17, 26, 0.75);
-            --surface-hover: rgba(20, 24, 38, 0.85);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(249, 115, 22, 0.4);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --orange: #f97316;
-            --orange-bright: #fb923c;
-            --orange-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
-            --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --mono: 'JetBrains Mono', monospace;
-        }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #23283c;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #343c5a;
+      }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #090a0f;
+        color: #f3f4f6;
+        font-family: 'Inter', sans-serif;
+      }
 
-        body {
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 115, 22, 0.15), transparent 60%),
-                radial-gradient(ellipse 50% 30% at 90% 20%, rgba(59, 130, 246, 0.05), transparent 50%),
-                radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 28px 28px;
-            color: var(--text-main);
-            font-family: var(--sans);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 1.5rem 1.25rem 6rem;
-        }
+      .macror-panel {
+        background: #11131d;
+        border: 1px solid #1e2235;
+        border-radius: 1rem;
+      }
 
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-        }
+      .macror-subpanel {
+        background: #161826;
+        border: 1px solid #23283d;
+        border-radius: 0.85rem;
+      }
 
-        /* Floating Island Navbar */
-        .nav-island {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(12, 14, 22, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            padding: 0.55rem 1rem 0.55rem 0.75rem;
-            border-radius: 9999px;
-            margin-bottom: 3.5rem;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-            position: sticky;
-            top: 1rem;
-            z-index: 50;
-        }
+      .macror-btn-primary {
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+        border: 1px solid rgba(251, 146, 60, 0.35);
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .macror-btn-primary:hover {
+        background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(234, 88, 12, 0.5);
+      }
+      .macror-btn-primary:active {
+        transform: translateY(0);
+      }
 
-        .nav-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            text-decoration: none;
-            color: #ffffff;
-        }
+      .sidebar-tab.active {
+        background: #161928;
+        border: 1px solid rgba(249, 115, 22, 0.6);
+        color: #f97316;
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.15);
+      }
 
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--orange-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--mono);
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #ffffff;
-            box-shadow: 0 0 14px rgba(249, 115, 22, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-        }
+      .sidebar-tab:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.04);
+        color: #ffffff;
+      }
 
-        .nav-brand-text {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-        }
-
-        .nav-item {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            padding: 0.3rem 0.65rem;
-            border-radius: 9999px;
-            transition: all 0.15s ease;
-        }
-
-        .nav-item:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        /* Hero */
-        .hero {
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-lead {
-            font-size: 1.15rem;
-            color: #e2e8f0;
-            font-weight: 500;
-            line-height: 1.55;
-            margin-bottom: 1.25rem;
-        }
-
-        .hero-lead span {
-            color: var(--orange-bright);
-        }
-
-        .hero-body {
-            font-size: 0.96rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 680px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-body strong {
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        /* CTA Actions */
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.25rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.86rem;
-            font-weight: 600;
-            padding: 0.65rem 1.25rem;
-            border-radius: 0.7rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .btn-glow {
-            background: var(--orange-gradient);
-            color: #ffffff;
-            border: 1px solid rgba(251, 146, 60, 0.4);
-            box-shadow: 0 4px 20px rgba(234, 88, 12, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        }
-
-        .btn-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.6);
-        }
-
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: #e2e8f0;
-        }
-
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.18);
-            transform: translateY(-2px);
-            color: #ffffff;
-        }
-
-        /* Sleek Social Bar */
-        .social-dock {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .social-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            transition: all 0.15s ease;
-        }
-
-        .social-pill:hover {
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.07);
-            transform: translateY(-1px);
-        }
-
-        .social-pill svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-            opacity: 0.8;
-        }
-
-        /* 4-Highlights Grid (Cool & Honest) */
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 0.85rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .highlight-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 0.85rem;
-            padding: 1.15rem;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-            background: var(--surface-hover);
-        }
-
-        .card-icon {
-            font-size: 1.35rem;
-            margin-bottom: 0.4rem;
-            display: inline-block;
-        }
-
-        .card-heading {
-            font-size: 0.92rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-subtext {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Section Headings */
-        .section-header {
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-
-        /* Featured Flagship Card (Macro R) */
-        .flagship-box {
-            background: linear-gradient(180deg, rgba(249, 115, 22, 0.07) 0%, rgba(14, 17, 26, 0.9) 100%);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            border-radius: 1.1rem;
-            padding: 1.85rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.5);
-            transition: all 0.2s ease;
-        }
-
-        .flagship-box:hover {
-            border-color: rgba(249, 115, 22, 0.5);
-            box-shadow: 0 16px 45px -10px rgba(249, 115, 22, 0.15);
-        }
-
-        .flagship-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .flagship-title {
-            font-size: 1.45rem;
-            font-weight: 800;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .flagship-badge {
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            font-weight: 700;
-            padding: 0.2rem 0.55rem;
-            border-radius: 9999px;
-            background: rgba(249, 115, 22, 0.2);
-            color: var(--orange-bright);
-            border: 1px solid rgba(249, 115, 22, 0.35);
-        }
-
-        .flagship-subtitle {
-            font-size: 0.88rem;
-            color: var(--orange-bright);
-            font-weight: 500;
-            margin-top: 0.15rem;
-        }
-
-        .flagship-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-            margin-bottom: 1.25rem;
-        }
-
-        .fleet-pricing-ribbon {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 0.65rem;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            font-size: 0.82rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .fleet-pricing-ribbon strong {
-            color: var(--orange-bright);
-        }
-
-        .fleet-pricing-ribbon a {
-            color: var(--orange-bright);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .fleet-pricing-ribbon a:hover {
-            text-decoration: underline;
-        }
-
-        .actions-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        /* Other Project Cards */
-        .project-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 0.95rem;
-            padding: 1.35rem;
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .project-card-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 0.25rem;
-        }
-
-        .project-card-tag {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--orange-bright);
-            margin-bottom: 0.65rem;
-            display: block;
-        }
-
-        .project-card-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
-        /* Chiya Widget */
-        .chiya-dock {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 0.95rem;
-            padding: 1.25rem 1.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .chiya-btn {
-            background: var(--orange-gradient);
-            color: #ffffff;
-            border: 1px solid rgba(251, 146, 60, 0.4);
-            padding: 0.55rem 1.15rem;
-            border-radius: 0.6rem;
-            font-family: var(--sans);
-            font-size: 0.82rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.35);
-            transition: all 0.2s ease;
-        }
-
-        .chiya-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
-        }
-
-        .chiya-btn:active {
-            transform: scale(0.97);
-        }
-
-        .chiya-counter {
-            background: rgba(0, 0, 0, 0.35);
-            padding: 0.1rem 0.45rem;
-            border-radius: 9999px;
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: #fed7aa;
-        }
-
-        /* Footer */
-        footer {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.15s ease;
-        }
-
-        footer a:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 640px) {
-            .hero h1 { font-size: 2.25rem; }
-            .nav-island { padding: 0.45rem 0.75rem; }
-            .flagship-box { padding: 1.25rem; }
-            .chiya-dock { flex-direction: column; align-items: flex-start; }
-        }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.45; transform: scale(0.85); }
+      }
+      .pulse-indicator {
+        animation: pulseGlow 2s infinite ease-in-out;
+      }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Floating Island Nav -->
-        <nav class="nav-island">
-            <a href="/" class="nav-brand">
-                <div class="logo-mark">AP</div>
-                <span class="nav-brand-text">Avinash Poudel</span>
+<body class="flex h-screen overflow-hidden select-none">
+
+    <!-- Macro R Left Sidebar (Exact Replica of rewards.avinashpoudel.com.np) -->
+    <aside class="w-64 flex flex-col border-r border-[#1a1d2e] bg-[#0c0e16] pt-5 pb-4 hidden lg:flex h-full relative z-20 shrink-0">
+        <!-- Brand Header -->
+        <div class="px-5 mb-5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center p-1.5 shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-full h-full text-white">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-white font-bold text-sm tracking-tight">Avinash</span>
+                        <span class="px-1 py-0.2 rounded text-[9px] font-mono font-bold bg-orange-500/20 text-orange-400 border border-orange-500/30">DEV</span>
+                    </div>
+                    <span class="text-[10px] text-zinc-500 font-mono">Portfolio &bull; v2.6</span>
+                </div>
+            </div>
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">PRO</span>
+        </div>
+
+        <!-- + Contact / Gateway CTA Button -->
+        <div class="px-4 mb-4">
+            <a href="mailto:mail@avinashpoudel.com.np" class="w-full macror-btn-primary text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 text-center shadow-lg">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Get In Touch</span>
+            </a>
+        </div>
+
+        <!-- Nav Rail Links -->
+        <nav class="flex-1 px-3 space-y-1.5 overflow-y-auto">
+            <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="flex items-center justify-between px-3.5 py-2.5 text-xs text-zinc-400 hover:text-white rounded-xl transition-all hover:bg-white/[0.04]">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="monitor" class="w-4 h-4 text-orange-400"></i>
+                    <span>Live Gateway</span>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
             </a>
 
-            <div class="nav-links">
-                <a href="#projects" class="nav-item">Projects</a>
-                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="nav-item">Macro R ↗</a>
-                <a href="/pricing" class="nav-item">Pricing</a>
-                <a href="mailto:mail@avinashpoudel.com.np" class="nav-item">Contact</a>
+            <a href="#overview" class="sidebar-tab active flex items-center gap-3 px-3.5 py-2.5 text-xs rounded-xl font-medium transition-all">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#systems" class="sidebar-tab flex items-center gap-3 px-3.5 py-2.5 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                <i data-lucide="layers" class="w-4 h-4"></i>
+                <span>Built Systems</span>
+            </a>
+
+            <a href="/pricing" class="sidebar-tab flex items-center gap-3 px-3.5 py-2.5 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                <i data-lucide="sliders" class="w-4 h-4"></i>
+                <span>Pricing (NPR)</span>
+            </a>
+
+            <a href="#chiya" class="sidebar-tab flex items-center gap-3 px-3.5 py-2.5 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                <i data-lucide="coffee" class="w-4 h-4 text-amber-400"></i>
+                <span>Chiya Counter</span>
+            </a>
+
+            <!-- Social Links -->
+            <div class="pt-3 border-t border-[#1a1d2e] my-2 space-y-1">
+                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="sidebar-tab flex items-center gap-3 px-3.5 py-2 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>GitHub (@shroudbean)</span>
+                </a>
+                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="sidebar-tab flex items-center gap-3 px-3.5 py-2 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-blue-400"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="sidebar-tab flex items-center gap-3 px-3.5 py-2 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                    <i data-lucide="twitter" class="w-4 h-4 text-sky-400"></i>
+                    <span>X (Twitter)</span>
+                </a>
+                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="sidebar-tab flex items-center gap-3 px-3.5 py-2 text-xs text-zinc-400 rounded-xl font-medium transition-all">
+                    <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+                    <span>Instagram</span>
+                </a>
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <header class="hero">
-            <h1>Avinash Poudel</h1>
-            
-            <div class="hero-lead">
-                Student and creator building <span>Macro R</span> and autonomous software systems from Biratnagar, Nepal.
+        <!-- Bottom Status Line (Exact replica of rewards exit status) -->
+        <div class="px-4 py-3 mt-auto border-t border-[#1a1d2e] flex items-center justify-between text-xs font-mono text-zinc-400 bg-[#090b12]">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-indicator shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                <span class="text-[11px] text-zinc-300">Live connection</span>
+            </div>
+            <span class="text-[10px] text-zinc-500">Biratnagar 🇳🇵</span>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden bg-[#090a0f] relative">
+        <!-- Top Appbar (Exact Replica) -->
+        <header class="h-14 sm:h-16 flex items-center justify-between px-4 sm:px-6 md:px-8 border-b border-[#181b2c] z-10 shrink-0 bg-[#090a0f]/90 backdrop-blur-md">
+            <div>
+                <h1 class="text-base sm:text-lg font-bold text-white tracking-tight">Your day, in view</h1>
+                <p class="text-[11px] sm:text-xs text-zinc-400 hidden sm:block">Automated session control and portfolio systems by Avinash Poudel</p>
             </div>
 
-            <p class="hero-body">
-                Hey! I'm <strong>Avinash Poudel</strong> (@shroudbean). Rather than writing lines of code by hand, I pair-program with <strong>Antigravity</strong> (Google DeepMind's agentic AI) to architect, debug, and ship production-grade bots, financial scrapers, and automation fleets.
-            </p>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-indicator shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                    <span class="hidden sm:inline">Automation ready</span>
+                </div>
 
-            <div class="hero-actions">
-                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn btn-glow">
-                    <span>Open Macro R Gateway</span> ↗
-                </a>
-                <a href="/pricing" class="btn btn-glass">
-                    <span>Pricing Plans (NPR) &rarr;</span>
-                </a>
-            </div>
-
-            <!-- Social Dock with Icons -->
-            <div class="social-dock">
-                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>GitHub</span> ↗
-                </a>
-                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    <span>LinkedIn</span> ↗
-                </a>
-                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    <span>X</span> ↗
-                </a>
-                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.12-.46-.19-.84-.19H5.2v4.28h1.38c.38 0 .66-.07.84-.2.18-.13.27-.37.27-.72v-2.45c0-.36-.09-.59-.27-.72zM0 4.8v14.4C0 20.4 1.6 22 3.6 22h16.8c2 0 3.6-1.6 3.6-3.6V4.8C24 3.6 22.4 2 20.4 2H3.6C1.6 2 0 3.6 0 4.8zm7.3 11.51c-.63.42-1.5.63-2.61.63H2.8V7.06h1.91c1.1 0 1.98.21 2.61.63.63.42.95 1.12.95 2.1v2.59c0 .98-.32 1.68-.97 2.1zm5.13-1.07h-2.57v-2.12h2.57V9.75h-2.57V7.06h3.45V5.2H7.95v13.6h5.36v-1.86h-.88v-1.66zm6.77-5.04l-1.92 5.86h-1.89l-1.92-5.86h1.95l.95 3.42.95-3.42h1.88z"/></svg>
-                    <span>Dev.to</span> ↗
-                </a>
-                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="social-pill">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <span>Instagram</span> ↗
-                </a>
-                <a href="mailto:mail@avinashpoudel.com.np" class="social-pill">
-                    <span>mail@avinashpoudel.com.np</span>
+                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="macror-btn-primary text-xs font-semibold px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                    <span>Open Gateway</span>
                 </a>
             </div>
         </header>
 
-        <!-- 4-Card Highlights Grid (Modern & Authentic) -->
-        <div class="highlights-grid">
-            <div class="highlight-card">
-                <span class="card-icon">🛸</span>
-                <div class="card-heading">Antigravity AI Co-Pilot</div>
-                <div class="card-subtext">Pair programming with Google DeepMind's agentic AI to ship high-scale code.</div>
-            </div>
-
-            <div class="highlight-card">
-                <span class="card-icon">⚡</span>
-                <div class="card-heading">Macro R Fleet</div>
-                <div class="card-subtext">Autonomous Microsoft Rewards bot simulating human typing and cursor curves.</div>
-            </div>
-
-            <div class="highlight-card">
-                <span class="card-icon">📈</span>
-                <div class="card-heading">Live Market Engine</div>
-                <div class="card-subtext">Real-time Nepal Stock Exchange order book &amp; floor sheet tracking.</div>
-            </div>
-        </div>
-
-        <!-- Featured Projects -->
-        <section id="projects">
-            <div class="section-header">
-                <h2 class="section-title">Featured Systems</h2>
-            </div>
-
-            <!-- Flagship Project: Macro R -->
-            <div class="flagship-box">
-                <div class="flagship-header">
+        <!-- Scrollable Workspace Body -->
+        <div class="flex-1 overflow-y-auto px-4 py-5 sm:p-6 md:p-8 space-y-6" id="scroll-container">
+            
+            <!-- Top Status Alert Bar (Exact replica of rewards waiting banner) -->
+            <div class="macror-panel p-4 flex items-center justify-between flex-wrap gap-3 border-[#1e2336] bg-[#0f111b]">
+                <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-indicator shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0"></span>
                     <div>
-                        <div class="flagship-title">
-                            Macro R
-                            <span class="flagship-badge">FLAGSHIP</span>
+                        <div class="text-xs sm:text-sm font-semibold text-zinc-200">
+                            Macro R Cluster is online &bull; Microsoft Rewards automation fleet active
                         </div>
-                        <div class="flagship-subtitle">Autonomous Microsoft Rewards Orchestrator &bull; Zero Detection</div>
+                        <div class="text-[11px] text-zinc-400 mt-0.5">
+                            Built by Avinash Poudel co-coding with Google DeepMind's Antigravity AI companion.
+                        </div>
                     </div>
                 </div>
 
-                <p class="flagship-desc">
-                    My flagship automation project! Simulates human typing delays, natural mouse curvature, and automated MSN news reading with zero CAPTCHA flags. Runs autonomously on a multi-account Azure VM cloud mesh behind a live monitoring web dashboard.
-                </p>
+                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="macror-btn-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-2">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    <span>Launch Gateway</span>
+                </a>
+            </div>
 
-                <div class="fleet-pricing-ribbon">
-                    <div>
-                        Nepal Subscriptions: <strong>750 NPR</strong> (Starter) &bull; <strong>1,500 NPR</strong> (Pro) &bull; <strong>2,500 NPR</strong> (Dedicated) &bull; <strong>4,000 NPR</strong> (Fleet)
+            <!-- Main Overview Panel (Exact Replica of "Macro R Overview" in screenshot 1) -->
+            <div id="overview" class="macror-panel p-5 sm:p-6 space-y-5">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-lg sm:text-xl font-bold text-white tracking-tight">Avinash Poudel Overview</h2>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Active Builder
+                        </span>
                     </div>
-                    <a href="/pricing">View All Plans &rarr;</a>
+
+                    <div class="flex items-center gap-2">
+                        <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="macror-btn-primary text-xs font-semibold px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                            <span>Add Account</span>
+                        </a>
+                        <span class="px-2.5 py-1 rounded-xl text-xs font-medium bg-[#161928] text-emerald-400 border border-[#232840] flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Active
+                        </span>
+                    </div>
                 </div>
 
-                <div class="actions-row">
-                    <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn btn-glow">
-                        <span>Launch Rewards Gateway</span> ↗
-                    </a>
-                    <a href="/pricing" class="btn btn-glass">
-                        <span>Pricing Plans &rarr;</span>
-                    </a>
+                <!-- 4 Telemetry Metric Cards (Exact replica of TOTAL BALANCE, ACCOUNTS, TODAY'S POINTS, NEXT SESSION) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                    <!-- Card 1 -->
+                    <div class="macror-subpanel p-4 flex flex-col justify-between min-h-[105px]">
+                        <div class="flex items-center justify-between text-zinc-400 text-xs">
+                            <span class="font-mono text-[10px] tracking-wider text-zinc-400 font-semibold uppercase">TOTAL PROJECTS</span>
+                            <div class="w-6 h-6 rounded-lg bg-orange-500/10 border border-orange-500/25 flex items-center justify-center text-orange-400">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-white tracking-tight">3 <span class="text-xs text-orange-400 font-mono">ENGINES</span></div>
+                            <div class="text-[11px] text-zinc-500 mt-0.5">Macro R, NEPSE, Astha</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="macror-subpanel p-4 flex flex-col justify-between min-h-[105px]">
+                        <div class="flex items-center justify-between text-zinc-400 text-xs">
+                            <span class="font-mono text-[10px] tracking-wider text-zinc-400 font-semibold uppercase">ORIGIN NODE</span>
+                            <div class="w-6 h-6 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-white tracking-tight">Nepal <span class="text-xs text-emerald-400 font-mono">🇳🇵</span></div>
+                            <div class="text-[11px] text-zinc-500 mt-0.5">Biratnagar (UTC+5:45)</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 (Chiya Real-Time Global Counter) -->
+                    <div class="macror-subpanel p-4 flex flex-col justify-between min-h-[105px]">
+                        <div class="flex items-center justify-between text-zinc-400 text-xs">
+                            <span class="font-mono text-[10px] tracking-wider text-zinc-400 font-semibold uppercase">GLOBAL CHIYA</span>
+                            <div class="w-6 h-6 rounded-lg bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
+                                <i data-lucide="coffee" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                                <span id="chiyaCountTelemetry">221</span> <span class="text-xs text-amber-400 font-mono">CUPS</span>
+                            </div>
+                            <!-- Live Progress Bar matching Today's Points -->
+                            <div class="w-full bg-zinc-800 h-1.5 rounded-full overflow-hidden mt-1.5">
+                                <div class="bg-gradient-to-r from-orange-500 to-amber-500 h-full w-[70%] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="macror-subpanel p-4 flex flex-col justify-between min-h-[105px]">
+                        <div class="flex items-center justify-between text-zinc-400 text-xs">
+                            <span class="font-mono text-[10px] tracking-wider text-zinc-400 font-semibold uppercase">AI CO-PILOT</span>
+                            <div class="w-6 h-6 rounded-lg bg-purple-500/10 border border-purple-500/25 flex items-center justify-center text-purple-400">
+                                <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xl sm:text-2xl font-bold text-white tracking-tight">Antigravity</div>
+                            <div class="text-[11px] text-zinc-500 mt-0.5">Google DeepMind Agent</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Other Projects Grid -->
-            <div class="project-row">
-                <div class="project-card">
-                    <div class="project-card-title">Astha Canvas</div>
-                    <span class="project-card-tag">Retail POS &bull; Gemini Multimodal AI</span>
-                    <p class="project-card-desc">
-                        Art store point-of-sale tool. Point a camera or speak into the mic &mdash; Gemini AI detects inventory items automatically with offline sync &amp; eSewa QR billing.
-                    </p>
+            <!-- Configured Systems (Exact replica of "Configured Accounts" card in screenshot 1 & 2) -->
+            <div id="systems" class="space-y-4">
+                <div class="flex items-center gap-2 text-xs font-semibold text-zinc-300 font-mono uppercase tracking-wider">
+                    <i data-lucide="cpu" class="w-4 h-4 text-orange-400"></i>
+                    <span>Configured Systems</span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] bg-zinc-800 text-zinc-400 font-normal">3 builds</span>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-card-title">NEPSE Live Market Engine</div>
-                    <span class="project-card-tag">Financial Data &bull; Real-Time</span>
-                    <p class="project-card-desc">
-                        Real-time Nepal Stock Exchange data engine streaming live floor sheets, sector indices, and market depths without delays or API blocks.
-                    </p>
+                <!-- SYSTEM 1: MACRO R (Flagship Build) -->
+                <div class="macror-panel p-5 sm:p-6 space-y-5 border-[#272c44]">
+                    <!-- Top Info Row -->
+                    <div class="flex items-center justify-between flex-wrap gap-2 pb-4 border-b border-[#1b1f32]">
+                        <div class="flex items-center gap-2.5 flex-wrap">
+                            <span class="w-7 h-7 rounded-lg bg-[#1a1d2e] border border-[#272c44] flex items-center justify-center font-mono text-xs font-bold text-orange-400">1</span>
+                            <span class="text-sm sm:text-base font-bold text-white">Macro R</span>
+                            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">Connected</span>
+                            
+                            <span class="text-xs text-zinc-400 font-mono flex items-center gap-1.5 ml-1">
+                                <i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-500"></i>
+                                <span>rewards.avinashpoudel.com.np</span>
+                            </span>
+                            <span class="text-xs text-orange-400 font-mono flex items-center gap-1 ml-1">
+                                <i data-lucide="link-2" class="w-3.5 h-3.5"></i>
+                                <span>27k+ Points Automated</span>
+                            </span>
+                        </div>
+
+                        <span class="px-2.5 py-1 rounded-xl text-xs font-medium bg-[#161928] text-emerald-400 border border-[#232840] flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            Active
+                        </span>
+                    </div>
+
+                    <!-- Two Sub-Panels matching Screenshot 2 (SEARCH POINTS & DAILY PROGRESS) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Left Sub-Panel -->
+                        <div class="macror-subpanel p-4 flex flex-col justify-between space-y-4">
+                            <div>
+                                <div class="flex items-center justify-between text-xs mb-2">
+                                    <span class="flex items-center gap-1.5 font-semibold text-zinc-300 font-mono text-[11px] uppercase">
+                                        <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-orange-400"></i>
+                                        <span>AUTOMATION TELEMETRY</span>
+                                    </span>
+                                    <span class="text-orange-400 font-mono font-bold text-xs">Active Engine</span>
+                                </div>
+                                <div class="w-full bg-zinc-800 h-2 rounded-full overflow-hidden mb-3">
+                                    <div class="bg-gradient-to-r from-orange-500 to-amber-500 h-full w-[85%] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 text-xs">
+                                <div class="flex justify-between text-zinc-400">
+                                    <span>Stealth Mode</span>
+                                    <span class="text-white font-mono">Human Bezier Cursor &bull; Delays</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-400">
+                                    <span>Read to Earn</span>
+                                    <span class="text-emerald-400 font-mono font-semibold">&#10003; MSN News Scroll Pauses</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-400">
+                                    <span>Detection Safeguard</span>
+                                    <span class="text-emerald-400 font-mono font-semibold">&#10003; 0 CAPTCHA Risk Flags</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-400">
+                                    <span>Cloud Deployment</span>
+                                    <span class="text-white font-mono">Multi-Node Azure VM Mesh</span>
+                                </div>
+                            </div>
+
+                            <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="w-full macror-btn-primary py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 text-center">
+                                <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                                <span>Run this session now</span>
+                            </a>
+                        </div>
+
+                        <!-- Right Sub-Panel (Fleet Pricing Plans) -->
+                        <div class="macror-subpanel p-4 flex flex-col justify-between space-y-4">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="flex items-center gap-1.5 font-semibold text-zinc-300 font-mono text-[11px] uppercase">
+                                    <i data-lucide="compass" class="w-3.5 h-3.5 text-orange-400"></i>
+                                    <span>NEPAL FLEET PRICING</span>
+                                </span>
+                                <span class="text-zinc-500 font-mono text-xs">Monthly NPR</span>
+                            </div>
+
+                            <!-- Circular Progress / Status Vibe -->
+                            <div class="flex items-center gap-4 py-1">
+                                <div class="w-16 h-16 rounded-full border-4 border-orange-500 border-t-zinc-800 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                                    <span class="text-xs font-mono font-bold text-white">4 PLANS</span>
+                                </div>
+                                <div class="space-y-1 text-xs">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-400 font-semibold font-mono">Starter:</span>
+                                        <span class="text-zinc-300">750 NPR (10 Accounts)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-400 font-semibold font-mono">Pro:</span>
+                                        <span class="text-zinc-300">1,500 NPR (20 Accounts)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-400 font-semibold font-mono">Dedicated:</span>
+                                        <span class="text-zinc-300">2,500 NPR (30 Accounts)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-orange-400 font-semibold font-mono">Enterprise:</span>
+                                        <span class="text-zinc-300">4,000 NPR (Unlimited)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="/pricing" class="w-full bg-[#1b1f32] hover:bg-[#232840] text-zinc-200 hover:text-white border border-[#292f4c] py-2 px-3 rounded-xl text-xs font-medium flex items-center justify-center gap-2 transition-all">
+                                <i data-lucide="sliders" class="w-3.5 h-3.5 text-orange-400"></i>
+                                <span>Configure Subscription Plans</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Observed Streak Bar (Exact replica of "OBSERVED DAYS" in Screenshot 2!) -->
+                    <div class="pt-4 border-t border-[#1b1f32] space-y-2">
+                        <div class="flex items-center justify-between text-xs flex-wrap gap-2">
+                            <div class="flex items-center gap-2 font-mono text-[11px] text-zinc-300 font-semibold uppercase">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-orange-400"></i>
+                                <span>OBSERVED DAYS</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-[11px] font-mono text-zinc-400">
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-orange-500"></span> Clean Day</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Needs Review</span>
+                                <span class="text-zinc-300 font-semibold">Observation Streak: 14 of 14 clean days</span>
+                            </div>
+                        </div>
+
+                        <!-- 14 Day Heatmap Blocks -->
+                        <div class="grid grid-cols-7 sm:grid-cols-14 gap-1.5 pt-1">
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                            <div class="h-4 rounded bg-orange-500 shadow-[0_0_6px_rgba(249,115,22,0.5)]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SYSTEM 2: NEPSE & SYSTEM 3: ASTHA CANVAS GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- NEPSE Card -->
+                    <div class="macror-panel p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#1a1d2e] border border-[#272c44] flex items-center justify-center font-mono text-xs font-bold text-emerald-400">2</span>
+                                <span class="font-bold text-white text-sm">NEPSE Live Market Engine</span>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">Active</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Real-time Nepal Stock Exchange market engine streaming live floor sheets, sector indices, and market depth without delays or rate-limit blocks.
+                        </p>
+                        <div class="text-[11px] font-mono text-zinc-500 flex items-center gap-2 pt-1">
+                            <span>WebSockets</span> &bull; <span>Sub-second Handshakes</span> &bull; <span>FastAPI</span>
+                        </div>
+                    </div>
+
+                    <!-- Astha Canvas Card -->
+                    <div class="macror-panel p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#1a1d2e] border border-[#272c44] flex items-center justify-center font-mono text-xs font-bold text-cyan-400">3</span>
+                                <span class="font-bold text-white text-sm">Astha Canvas POS</span>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-cyan-950/60 text-cyan-400 border border-cyan-500/30">Active</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Point-of-sale inventory system for physical art stores. Uses Google Gemini multimodal AI to detect items by photo or voice, with offline Dexie.js sync &amp; eSewa QR.
+                        </p>
+                        <div class="text-[11px] font-mono text-zinc-500 flex items-center gap-2 pt-1">
+                            <span>Gemini Vision</span> &bull; <span>Wasm Background Removal</span> &bull; <span>Offline PWA</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Chiya Easter Egg -->
-        <div class="chiya-dock">
-            <div>
-                <div style="font-weight: 700; color: #ffffff; font-size: 0.95rem;">Send a cup of Chiya ☕</div>
-                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.15rem;">Virtual tea counter to keep building into the night.</div>
+            <!-- Chiya Easter Egg Section (Worldwide Sync) -->
+            <div id="chiya" class="macror-panel p-5 flex items-center justify-between flex-wrap gap-4 border-[#272c44]">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">☕</span>
+                        <h3 class="text-sm font-bold text-white">Send a cup of Chiya!</h3>
+                    </div>
+                    <p class="text-xs text-zinc-400 mt-0.5">Live worldwide counter. Every click on any device syncs in real-time.</p>
+                </div>
+
+                <button onclick="addChiya()" class="chiya-btn macror-btn-primary px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-transform active:scale-95">
+                    <span>Brew Chiya</span>
+                    <span id="chiyaCountBtn" class="bg-black/30 px-2 py-0.5 rounded-full font-mono text-[11px] text-amber-200">221</span>
+                </button>
             </div>
-            <button class="chiya-btn" onclick="addChiya()">
-                <span>Brew Chiya</span>
-                <span id="chiyaCount" class="chiya-counter">142</span>
-            </button>
+
+            <!-- Footer -->
+            <footer class="pt-4 border-t border-[#181b2c] flex items-center justify-between text-xs text-zinc-500 font-mono pb-8 flex-wrap gap-3">
+                <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Biratnagar, Nepal 🇳🇵</div>
+                <div class="flex items-center gap-4">
+                    <a href="https://rewards.avinashpoudel.com.np/" target="_blank" class="hover:text-zinc-300">Macro R Gateway ↗</a>
+                    <a href="/pricing" class="hover:text-zinc-300">Pricing</a>
+                    <a href="https://github.com/shroudbean" target="_blank" class="hover:text-zinc-300">GitHub</a>
+                    <a href="https://x.com/shroudbean" target="_blank" class="hover:text-zinc-300">X</a>
+                </div>
+            </footer>
         </div>
+    </main>
 
-        <!-- Sleek Footer -->
-        <footer>
-            <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Biratnagar, Nepal</div>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener">Macro R ↗</a>
-                <a href="/pricing">Pricing</a>
-                <a href="https://github.com/shroudbean" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://x.com/shroudbean" target="_blank" rel="noopener">X</a>
-            </div>
-        </footer>
-    </div>
-
+    <!-- Global Chiya Counter Script (Real-Time Cloudflare Edge Sync) -->
     <script>
-        var count = 142;
-        var counterEl = document.getElementById('chiyaCount');
+        lucide.createIcons();
+
+        var count = 221;
+        var btnCounter = document.getElementById('chiyaCountBtn');
+        var telemetryCounter = document.getElementById('chiyaCountTelemetry');
         var apiUrl = 'https://countapi.mileshilliard.com/api/v1';
         var key = 'avinashpoudel_chiya_v1';
+
+        function updateUI(val) {
+            count = val;
+            if (btnCounter) btnCounter.innerText = count;
+            if (telemetryCounter) telemetryCounter.innerText = count;
+        }
 
         // Fetch latest worldwide count on page load
         function fetchGlobalCount() {
@@ -776,21 +629,17 @@
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     if (data && typeof data.value === 'number') {
-                        count = data.value;
-                        if (counterEl) counterEl.innerText = count;
+                        updateUI(data.value);
                     }
                 })
                 .catch(function() {});
         }
 
         fetchGlobalCount();
-        // Auto-refresh worldwide brews every 10 seconds
         setInterval(fetchGlobalCount, 10000);
 
         function addChiya() {
-            // Instant optimistic update
-            count++;
-            if (counterEl) counterEl.innerText = count;
+            updateUI(count + 1);
 
             var btn = document.querySelector('.chiya-btn');
             if (btn) {
@@ -798,13 +647,11 @@
                 setTimeout(function() { btn.style.transform = ''; }, 150);
             }
 
-            // Sync live increment worldwide
             fetch(apiUrl + '/hit/' + key)
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     if (data && typeof data.value === 'number') {
-                        count = data.value;
-                        if (counterEl) counterEl.innerText = count;
+                        updateUI(data.value);
                     }
                 })
                 .catch(function() {});
