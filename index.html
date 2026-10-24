@@ -766,21 +766,48 @@
 
     <script>
         var count = 142;
-        try {
-            var stored = localStorage.getItem('chiya_count');
-            if (stored) count = parseInt(stored, 10);
-            document.getElementById('chiyaCount').innerText = count;
-        } catch(e) {}
+        var counterEl = document.getElementById('chiyaCount');
+        var apiUrl = 'https://countapi.mileshilliard.com/api/v1';
+        var key = 'avinashpoudel_chiya_v1';
+
+        // Fetch latest worldwide count on page load
+        function fetchGlobalCount() {
+            fetch(apiUrl + '/get/' + key)
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data && typeof data.value === 'number') {
+                        count = data.value;
+                        if (counterEl) counterEl.innerText = count;
+                    }
+                })
+                .catch(function() {});
+        }
+
+        fetchGlobalCount();
+        // Auto-refresh worldwide brews every 10 seconds
+        setInterval(fetchGlobalCount, 10000);
 
         function addChiya() {
+            // Instant optimistic update
             count++;
-            document.getElementById('chiyaCount').innerText = count;
-            try { localStorage.setItem('chiya_count', count); } catch(e) {}
+            if (counterEl) counterEl.innerText = count;
+
             var btn = document.querySelector('.chiya-btn');
             if (btn) {
                 btn.style.transform = 'scale(1.08)';
                 setTimeout(function() { btn.style.transform = ''; }, 150);
             }
+
+            // Sync live increment worldwide
+            fetch(apiUrl + '/hit/' + key)
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (data && typeof data.value === 'number') {
+                        count = data.value;
+                        if (counterEl) counterEl.innerText = count;
+                    }
+                })
+                .catch(function() {});
         }
     </script>
 </body>
