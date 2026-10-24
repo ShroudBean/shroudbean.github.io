@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Avinash Poudel — Software Developer, Systems Builder &amp; Creator of Macro R</title>
     <meta name="description" content="Official website and developer portfolio of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R, automation systems, low-level browser bots, and distributed architectures.">
     <meta name="keywords" content="Avinash Poudel, Avinash Poudel Nepal, Avinash Poudel developer, shroudbean, Avinash Poudel Biratnagar, Macro R, Avinash Poudel portfolio, shroudbean github, Nepalese software developer">
@@ -15,7 +15,7 @@
     <meta property="og:type" content="profile">
     <meta property="og:site_name" content="Avinash Poudel">
     <meta property="og:title" content="Avinash Poudel — Software Developer &amp; Systems Builder">
-    <meta property="og:description" content="Official website and developer portfolio of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Builder of Macro R and automation systems.">
+    <meta property="og:description" content="Official website and developer portfolio of Avinash Poudel (@shroudbean) from Biratnagar, Nepal. Creator of Macro R and automation systems.">
     <meta property="og:url" content="https://avinashpoudel.com.np/">
     <meta property="og:locale" content="en_US">
     <meta property="profile:first_name" content="Avinash">
@@ -102,668 +102,1029 @@
     }
     </script>
 
-    <!-- Tailwind CSS & Lucide Icons -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-            },
-            colors: {
-              replit: {
-                bg: '#07090e',
-                sidebar: '#08090e',
-                surface: '#0f1118',
-                border: 'rgba(255, 255, 255, 0.08)',
-                hover: '#151822',
-              },
-              orange: {
-                450: '#f97316',
-                550: '#ea580c',
-              }
-            }
-          }
-        }
-      }
-    </script>
-
+    
     <style>
-      /* Replit / Linear Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #27272a;
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #3f3f46;
-      }
+        :root {
+            --bg: #07090e;
+            --surface: rgba(15, 17, 24, 0.75);
+            --surface-hover: rgba(22, 25, 36, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --text-primary: #f4f4f7;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-orange: #f97316;
+            --accent-orange-dark: #ea580c;
+            --accent-gradient: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+            --accent-gradient-hover: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
+            --accent-glow: rgba(249, 115, 22, 0.35);
+            --mono-font: 'JetBrains Mono', monospace;
+            --sans-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
 
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
 
-      body {
-        background-color: #07090e;
-        background-image: 
-          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.09), transparent 70%),
-          radial-gradient(ellipse 60% 40% at 100% 0%, rgba(59, 130, 246, 0.04), transparent 60%);
-        color: #f4f4f7;
-        font-family: 'Inter', sans-serif;
-      }
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.12), transparent 70%),
+                radial-gradient(ellipse 60% 40% at 100% 0%, rgba(59, 130, 246, 0.04), transparent 60%);
+            color: var(--text-primary);
+            font-family: var(--sans-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2.5rem 1.25rem 6rem;
+        }
 
-      /* Light mode support matching rewards dashboard */
-      html:not(.dark) body,
-      html[data-theme='light'] body {
-        background-color: #f8fafc !important;
-        background-image: 
-          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.05), transparent 70%),
-          radial-gradient(ellipse 60% 40% at 100% 0%, rgba(59, 130, 246, 0.03), transparent 60%) !important;
-        color: #0f172a !important;
-      }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
 
-      /* Replit Glass Panel */
-      .glass-panel {
-        background: rgba(15, 17, 24, 0.72) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.07) !important;
-        border-radius: 1rem !important;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-      }
-      .glass-panel:hover {
-        border-color: rgba(249, 115, 22, 0.25) !important;
-      }
+        /* Nav */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-      html:not(.dark) .glass-panel,
-      html[data-theme='light'] .glass-panel {
-        background: rgba(255, 255, 255, 0.95) !important;
-        border-color: rgba(226, 232, 240, 0.95) !important;
-        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 1) !important;
-        color: #0f172a !important;
-      }
+        .nav-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: #ffffff;
+        }
 
-      /* Primary Button */
-      .btn-primary {
-        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
-        border: 1px solid rgba(251, 146, 60, 0.45) !important;
-        box-shadow: 0 3px 12px rgba(234, 88, 12, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .btn-primary:hover {
-        background: linear-gradient(135deg, #fb923c 0%, #f97316 100%) !important;
-        box-shadow: 0 5px 20px rgba(249, 115, 22, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
-        transform: translateY(-1px);
-      }
-      .btn-primary:active {
-        transform: translateY(0) scale(0.98);
-      }
+        .logo-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 60%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--mono-font);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(251, 146, 60, 0.35);
+        }
 
-      /* Secondary Button */
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: #d4d4d8;
-        transition: all 0.2s ease;
-      }
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.18);
-        color: #ffffff;
-        transform: translateY(-1px);
-      }
+        .brand-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
 
-      /* Sidebar navigation items */
-      .nav-link {
-        transition: all 0.15s ease;
-      }
-      .nav-link.active,
-      .nav-link:hover {
-        background: rgba(255, 255, 255, 0.06);
-        color: #ffffff;
-      }
-      .nav-link.active {
-        border-left: 2px solid #f97316;
-        background: linear-gradient(90deg, rgba(249, 115, 22, 0.12) 0%, transparent 100%);
-      }
+        .brand-handle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--mono-font);
+            font-weight: 400;
+        }
 
-      /* Pulse animation */
-      @keyframes pulseSlow {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.85); }
-      }
-      .pulse-slow {
-        animation: pulseSlow 2s infinite ease-in-out;
-      }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #34d399;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            font-family: var(--mono-font);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 10px #34d399;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(0.9); }
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 3.5rem;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            color: #fb923c;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-family: var(--mono-font);
+            font-size: 0.78rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-family: var(--mono-font);
+            font-size: 0.95rem;
+            color: var(--accent-orange);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .hero-desc strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            padding: 0.65rem 1.2rem;
+            border-radius: 0.65rem;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border: 1px solid rgba(251, 146, 60, 0.4);
+            box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gradient-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: #d1d5db;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: var(--border-hover);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* Social Pills Bar */
+        .social-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--mono-font);
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .social-chip:hover {
+            color: #ffffff;
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Pillars 4-grid */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .pillar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .pillar-label {
+            font-size: 0.72rem;
+            font-family: var(--mono-font);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .pillar-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .pillar-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Section titles */
+        .section-header {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+
+        .section-meta {
+            font-family: var(--mono-font);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Project Cards */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.85rem;
+            position: relative;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-card.featured {
+            border-color: rgba(249, 115, 22, 0.3);
+            background: linear-gradient(180deg, rgba(249, 115, 22, 0.04) 0%, rgba(15, 17, 24, 0.85) 100%);
+        }
+
+        .project-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .project-pill {
+            font-family: var(--mono-font);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.35rem;
+            background: rgba(249, 115, 22, 0.15);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .project-tag {
+            font-family: var(--mono-font);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+        }
+
+        .project-subtitle {
+            font-size: 0.88rem;
+            color: var(--accent-orange);
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        .project-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 0.65rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            margin-bottom: 1.25rem;
+        }
+
+        .spec-item {
+            font-size: 0.72rem;
+            font-family: var(--mono-font);
+            color: var(--text-muted);
+        }
+
+        .spec-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-family: var(--sans-font);
+            font-size: 0.82rem;
+            margin-top: 0.15rem;
+            font-weight: 600;
+        }
+
+        .pricing-callout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            background: rgba(249, 115, 22, 0.06);
+            border: 1px solid rgba(249, 115, 22, 0.22);
+            border-radius: 0.65rem;
+            font-size: 0.82rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pricing-callout-text {
+            color: var(--text-primary);
+        }
+
+        .pricing-callout-text strong {
+            color: #fb923c;
+        }
+
+        .pricing-callout a {
+            color: #fb923c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .pricing-callout a:hover {
+            text-decoration: underline;
+        }
+
+        .project-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        /* Terminal Component */
+        .terminal-box {
+            background: #05070c;
+            border: 1px solid var(--border);
+            border-radius: 0.85rem;
+            overflow: hidden;
+            font-family: var(--mono-font);
+            margin-bottom: 4rem;
+            box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-bar {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            user-select: none;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .terminal-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .terminal-screen {
+            padding: 1.25rem;
+            font-size: 0.82rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            max-height: 240px;
+            overflow-y: auto;
+        }
+
+        .terminal-prompt-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-prompt-char {
+            color: #34d399;
+            font-weight: 700;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: var(--mono-font);
+            font-size: 0.82rem;
+        }
+
+        .terminal-chips {
+            background: rgba(255, 255, 255, 0.015);
+            padding: 0.65rem 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .chip-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-right: 0.25rem;
+        }
+
+        .chip-button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: var(--mono-font);
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.35rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .chip-button:hover {
+            color: #ffffff;
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        /* Chiya Box */
+        .chiya-container {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.07) 0%, rgba(15, 17, 24, 0.9) 100%);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .chiya-btn {
+            background: var(--accent-gradient);
+            color: #ffffff;
+            border: 1px solid rgba(251, 146, 60, 0.4);
+            padding: 0.65rem 1.25rem;
+            border-radius: 0.65rem;
+            font-family: var(--sans-font);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.35);
+            transition: all 0.2s ease;
+        }
+
+        .chiya-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+        }
+
+        .chiya-btn:active {
+            transform: scale(0.97);
+        }
+
+        .chiya-count-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            font-family: var(--mono-font);
+            font-size: 0.78rem;
+            color: #fed7aa;
+        }
+
+        /* Footer */
+        footer {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--mono-font);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1.75rem 1rem 4rem; }
+            .hero-title { font-size: 2.15rem; }
+            .project-card { padding: 1.25rem; }
+            .chiya-container { flex-direction: column; align-items: flex-start; }
+        }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden text-zinc-100 antialiased selection:bg-orange-500/30 selection:text-orange-200">
-
-    <!-- Replit Workbench Left Sidebar -->
-    <aside class="w-64 flex flex-col border-r border-zinc-800/50 bg-[#08090e]/95 backdrop-blur-2xl pt-5 pb-4 hidden lg:flex h-full relative z-20 shrink-0 select-none">
-        
-        <!-- Replit Workspace Header -->
-        <div class="px-5 mb-5 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-3 group">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 via-amber-500 to-amber-600 flex items-center justify-center shadow-[0_0_18px_rgba(249,115,22,0.45)] border border-orange-300/40 p-1 group-hover:scale-105 transition-transform">
-                    <span class="font-mono font-bold text-white text-base">AP</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-white font-bold tracking-tight text-sm flex items-center gap-1.5">
-                        Avinash Poudel
-                    </span>
-                    <span class="text-[11px] text-zinc-400 font-mono">@shroudbean</span>
+<body>
+    <div class="container">
+        <!-- Minimal Top Nav -->
+        <nav>
+            <a href="/" class="nav-brand">
+                <div class="logo-box">AP</div>
+                <div>
+                    <div class="brand-name">Avinash Poudel</div>
+                    <div class="brand-handle">@shroudbean</div>
                 </div>
             </a>
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/25">DEV</span>
-        </div>
 
-        <!-- Quick Launch CTA in Sidebar -->
-        <div class="px-4 mb-5 flex flex-col gap-2">
-            <a href="/macror" class="w-full btn-primary text-xs font-semibold py-2.5 px-3 rounded-xl flex items-center justify-center gap-2 text-center">
-                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                <span>Explore Macro R Engine</span>
-            </a>
-            <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="w-full bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-medium py-2 px-3 rounded-xl border border-zinc-800 hover:border-zinc-700 transition-all flex items-center justify-center gap-2">
-                <i data-lucide="external-link" class="w-3.5 h-3.5 text-orange-400"></i>
-                <span>Rewards Gateway</span>
-            </a>
-        </div>
-
-        <!-- Replit Navigation Rail -->
-        <div class="px-3 mb-2 text-[10px] font-semibold text-zinc-500 uppercase tracking-wider font-mono">Workbench</div>
-        <nav class="flex-1 px-3 space-y-1 overflow-y-auto">
-            <a href="#overview" class="nav-link active flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                <i data-lucide="layout-grid" class="w-4 h-4 text-orange-400"></i>
-                <span>Overview &amp; Stats</span>
-            </a>
-            <a href="#projects" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                <i data-lucide="layers" class="w-4 h-4 text-zinc-400"></i>
-                <span>Projects &amp; Systems</span>
-            </a>
-            <a href="#terminal" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
-                <span>Terminal Shell</span>
-            </a>
-            <a href="#toolkit" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
-                <span>Stack &amp; Philosophy</span>
-            </a>
-            <a href="#chiya" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                <i data-lucide="coffee" class="w-4 h-4 text-amber-400"></i>
-                <span>Chiya Counter</span>
-            </a>
-
-            <!-- Social Links Group -->
-            <div class="pt-3 border-t border-zinc-800/50 my-2 space-y-1">
-                <div class="px-3 py-1 text-[10px] font-semibold text-zinc-500 uppercase tracking-wider font-mono">Profiles</div>
-                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                    <i data-lucide="github" class="w-4 h-4"></i>
-                    <span>GitHub (@shroudbean)</span>
-                </a>
-                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                    <i data-lucide="linkedin" class="w-4 h-4 text-blue-400"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                    <i data-lucide="twitter" class="w-4 h-4 text-sky-400"></i>
-                    <span>X / Twitter</span>
-                </a>
-                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                    <i data-lucide="code" class="w-4 h-4 text-purple-400"></i>
-                    <span>Dev.to</span>
-                </a>
-                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="nav-link flex items-center gap-3 px-3 py-2 text-xs text-zinc-400 rounded-xl font-medium">
-                    <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
-                    <span>Instagram</span>
+            <div class="nav-links">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>Online &bull; Biratnagar</span>
+                </div>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="/macror" class="nav-link">Macro R</a>
+                <a href="/pricing" class="nav-link">Pricing</a>
+                <a href="mailto:mail@avinashpoudel.com.np" class="btn btn-secondary" style="padding: 0.45rem 0.9rem; font-size: 0.8rem;">
+                    Contact
                 </a>
             </div>
         </nav>
 
-        <!-- Location & Status in Sidebar (Matching rewards dashboard Residential Exit) -->
-        <div class="px-4 py-3 mt-auto border-t border-zinc-900/90 flex flex-col gap-1 select-none bg-zinc-950/40">
-            <div class="flex items-center justify-between text-xs text-zinc-300 font-medium">
-                <span class="flex items-center gap-1.5 text-zinc-400">
-                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
-                    <span class="text-[11px] font-semibold uppercase tracking-wider">Origin Node</span>
-                </span>
-                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-slow shadow-[0_0_6px_rgba(52,211,153,0.7)]" title="Active"></span>
-            </div>
-            <div class="flex items-baseline justify-between mt-0.5">
-                <span class="text-xs font-semibold text-zinc-200">Biratnagar, Nepal</span>
-                <span class="text-[10px] text-zinc-500 font-mono">UTC+5:45</span>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Workspace Content -->
-    <main class="flex-1 flex flex-col h-full overflow-hidden bg-zinc-950 relative" id="main-content">
-        <!-- Top Radiant Glow -->
-        <div class="absolute top-0 left-0 w-full h-96 bg-orange-900/10 blur-[120px] pointer-events-none z-0"></div>
-
-        <!-- Top Header Appbar (Replit style) -->
-        <header class="h-14 md:h-16 flex items-center justify-between px-4 sm:px-6 md:px-8 border-b border-zinc-800/40 z-10 shrink-0 bg-[#08090e]/85 backdrop-blur-md">
-            <!-- Breadcrumbs -->
-            <div class="flex items-center gap-2 text-sm min-w-0">
-                <!-- Mobile brand logo -->
-                <div class="lg:hidden flex items-center gap-2 font-bold text-white text-sm whitespace-nowrap">
-                    <div class="w-7 h-7 rounded-lg bg-orange-500 flex items-center justify-center font-mono text-xs">AP</div>
-                    <span>Avinash Poudel</span>
-                </div>
-                <div class="hidden lg:flex items-center gap-2 text-xs font-mono text-zinc-400">
-                    <i data-lucide="terminal" class="w-3.5 h-3.5 text-orange-400"></i>
-                    <span>~</span>
-                    <span class="text-zinc-600">/</span>
-                    <span class="text-zinc-300 font-medium">avinash-poudel</span>
-                    <span class="text-zinc-600">/</span>
-                    <span class="text-orange-400">portfolio.go</span>
-                </div>
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-pill">
+                <span>🎒 Class 11 CS Student</span> &bull; <span>Biratnagar, Nepal 🇳🇵</span>
             </div>
 
-            <!-- Header Right Tools -->
-            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                <!-- Antigravity AI Pill -->
-                <div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-950/40 border border-orange-500/30 text-orange-400 text-[11px] font-mono font-medium">
-                    <span class="w-1.5 h-1.5 rounded-full bg-orange-400 pulse-slow"></span>
-                    <span>🛸 Antigravity Co-Pilot</span>
-                </div>
+            <h1 class="hero-title">
+                Avinash Poudel
+            </h1>
+            <div class="hero-subtitle">
+                <span>Software Developer &amp; Systems Builder</span> &bull; <span>Age 16</span>
+            </div>
 
-                <!-- Live Status Pill -->
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 text-[11px] font-medium font-mono select-none">
-                    <i class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-slow inline-block"></i>
-                    <span class="hidden xs:inline">Available for Hacking</span>
-                    <span class="xs:hidden">Online</span>
-                </span>
+            <p class="hero-desc">
+                Hey! I'm <strong>Avinash Poudel</strong>, a software developer and high school computer science student based in Biratnagar, Nepal. 
+                I build clean-room automation bots written in pure Go over Chrome DevTools Protocol (CDP), real-time financial WebSocket scrapers in Python, and distributed systems alongside <strong>Antigravity</strong> (Google DeepMind's agentic AI coding companion).
+            </p>
 
-                <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" class="p-2 rounded-lg bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 transition-colors" title="Toggle Theme">
-                    <i data-lucide="moon" class="w-4 h-4 theme-moon"></i>
-                </button>
+            <div class="hero-actions">
+                <a href="/macror" class="btn btn-primary">
+                    <span>Explore Macro R Engine</span> &rarr;
+                </a>
+                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn btn-secondary">
+                    <span>Rewards Gateway</span> &nearr;
+                </a>
+                <a href="/pricing" class="btn btn-secondary">
+                    <span>Pricing Plans (NPR)</span>
+                </a>
+            </div>
 
-                <!-- Email Contact CTA -->
-                <a href="mailto:mail@avinashpoudel.com.np" class="hidden md:inline-flex btn-primary text-xs font-semibold px-3 py-1.5 rounded-xl items-center gap-1.5">
-                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                    <span>Get In Touch</span>
+            <!-- Social Links Bar -->
+            <div class="social-bar">
+                <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="social-chip">
+                    <span>GitHub (@shroudbean)</span> &nearr;
+                </a>
+                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="social-chip">
+                    <span>LinkedIn</span> &nearr;
+                </a>
+                <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="social-chip">
+                    <span>X / Twitter</span> &nearr;
+                </a>
+                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="social-chip">
+                    <span>Dev.to</span> &nearr;
+                </a>
+                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="social-chip">
+                    <span>Instagram</span> &nearr;
+                </a>
+                <a href="mailto:mail@avinashpoudel.com.np" class="social-chip">
+                    <span>mail@avinashpoudel.com.np</span>
                 </a>
             </div>
         </header>
 
-        <!-- Scrollable Workspace Body -->
-        <div class="flex-1 overflow-y-auto px-4 py-6 sm:p-6 md:p-8 space-y-8 z-10" id="scroll-container">
-            
-            <!-- SECTION 1: OVERVIEW & HERO -->
-            <section id="overview" class="space-y-6 max-w-5xl">
-                <!-- Hero Intro Card -->
-                <div class="glass-panel p-6 sm:p-8 relative overflow-hidden">
-                    <div class="absolute -right-12 -top-12 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- 4-Pillars Grid (Matching Macror Style) -->
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-label">Primary Stack</div>
+                <div class="pillar-value">Go &bull; Python</div>
+                <div class="pillar-desc">Clean-room binaries, zero npm bloat, direct protocol programming.</div>
+            </div>
 
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-orange-500/15 text-orange-400 border border-orange-500/30">
-                            🎒 Class 11 CS Student &bull; Biratnagar, Nepal
-                        </span>
-                        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-purple-500/15 text-purple-400 border border-purple-500/30 hidden sm:inline">
-                            Age 16 Builder
-                        </span>
+            <div class="pillar-card">
+                <div class="pillar-label">Flagship</div>
+                <div class="pillar-value" style="color: #fb923c;">Macro R</div>
+                <div class="pillar-desc">Autonomous Microsoft Rewards bot with human Bezier cursor curves.</div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-label">AI Co-Pilot</div>
+                <div class="pillar-value" style="color: #c084fc;">Antigravity</div>
+                <div class="pillar-desc">Google DeepMind's agentic AI pair programmer for high-scale code.</div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-label">Origin &bull; Timezone</div>
+                <div class="pillar-value" style="color: #34d399;">Biratnagar</div>
+                <div class="pillar-desc">Nepal (UTC+5:45). Hacking after high school classes.</div>
+            </div>
+        </div>
+
+        <!-- Featured Projects Section -->
+        <section id="projects">
+            <div class="section-header">
+                <h2 class="section-title">Featured Systems &amp; Projects</h2>
+                <div class="section-meta">Production Software</div>
+            </div>
+
+            <div class="projects-list">
+                <!-- Project 1: Macro R -->
+                <article class="project-card featured">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-title">
+                                <span>Macro R</span>
+                                <span class="project-pill">FLAGSHIP</span>
+                            </div>
+                            <div class="project-subtitle">
+                                Autonomous Microsoft Rewards Orchestrator &bull; Read to Earn &bull; Zero Detection
+                            </div>
+                        </div>
+                        <span class="project-tag">Pure Go &bull; CDP Stealth</span>
                     </div>
 
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2">
-                        Avinash Poudel
-                    </h1>
-                    <div class="text-base sm:text-lg font-mono text-orange-400 mb-4 font-semibold">
-                        @shroudbean &bull; Systems &amp; Automation Engineer
-                    </div>
-
-                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-3xl mb-6">
-                        Hey! I'm <strong>Avinash Poudel</strong>, a software developer and high school computer science student based in Biratnagar, Nepal. 
-                        Not a corporate engineer or 10x staff dev &mdash; just a curious 16-year-old builder who loves inspecting protocols, writing Go &amp; Python automation engines, and crafting high-performance systems alongside <strong>Antigravity</strong> (Google DeepMind's agentic AI coding companion).
+                    <p class="project-desc">
+                        My flagship automation engine. Built completely clean-room in pure Go without Puppeteer or Selenium. Communicates directly over Chrome DevTools Protocol (CDP) with randomized Bezier mouse curves and human-like typing delays so Microsoft can't flag it as a bot. Deployed on an Azure B1s cloud mesh behind Cloudflare Zero Trust with live noVNC virtual screens.
                     </p>
 
-                    <!-- Quick Action Chips -->
-                    <div class="flex items-center gap-2.5 flex-wrap">
-                        <a href="https://github.com/shroudbean" target="_blank" rel="noopener" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="github" class="w-3.5 h-3.5 text-zinc-300"></i>
-                            <span>GitHub</span>
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 text-zinc-500"></i>
+                    <div class="project-specs">
+                        <div class="spec-item">
+                            READ TO EARN
+                            <strong>MSN news scroll pauses</strong>
+                        </div>
+                        <div class="spec-item">
+                            AUTONOMOUS
+                            <strong>Desktop, Mobile &amp; Bonus Cards</strong>
+                        </div>
+                        <div class="spec-item">
+                            OPERATOR STREAM
+                            <strong>Real-time SSE event alerts</strong>
+                        </div>
+                        <div class="spec-item">
+                            SAFETY PRINCIPLE
+                            <strong>Zero CAPTCHA risk detection</strong>
+                        </div>
+                    </div>
+
+                    <div class="pricing-callout">
+                        <div class="pricing-callout-text">
+                            Nepal Fleet Plans: <strong>750 NPR</strong> (Starter) &bull; <strong>1,500 NPR</strong> (Pro) &bull; <strong>2,500 NPR</strong> (Dedicated) &bull; <strong>4,000 NPR</strong> (Fleet)
+                        </div>
+                        <a href="/pricing">View All Plans &rarr;</a>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="/macror" class="btn btn-primary">
+                            <span>Deep Dive Architecture</span> &rarr;
                         </a>
-                        <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="linkedin" class="w-3.5 h-3.5 text-blue-400"></i>
-                            <span>LinkedIn</span>
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 text-zinc-500"></i>
+                        <a href="/pricing" class="btn btn-secondary">
+                            <span>Pricing Plans</span>
                         </a>
-                        <a href="https://x.com/shroudbean" target="_blank" rel="noopener" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="twitter" class="w-3.5 h-3.5 text-sky-400"></i>
-                            <span>Twitter / X</span>
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 text-zinc-500"></i>
-                        </a>
-                        <a href="https://dev.to/shroudbean" target="_blank" rel="noopener" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="code" class="w-3.5 h-3.5 text-purple-400"></i>
-                            <span>Dev.to</span>
-                        </a>
-                        <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-400"></i>
-                            <span>Instagram</span>
+                        <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn btn-secondary">
+                            <span>Launch Gateway</span> &nearr;
                         </a>
                     </div>
+                </article>
+
+                <!-- Project 2: NEPSE Scraper -->
+                <article class="project-card">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-title">
+                                <span>NEPSE Live Financial Engine</span>
+                            </div>
+                            <div class="project-subtitle" style="color: #34d399;">
+                                Reverse-engineering Nepal Stock Exchange's real-time order books
+                            </div>
+                        </div>
+                        <span class="project-tag">Python &bull; WebSockets &bull; Asyncio</span>
+                    </div>
+
+                    <p class="project-desc">
+                        Reversed NEPSE's encrypted token handshakes and real-time WebSocket stream to build an async Python engine that captures floor sheets, real-time market depths, and sector indices with zero rate-limit blocks.
+                    </p>
+
+                    <div class="project-specs">
+                        <div class="spec-item">
+                            DATA PIPELINE
+                            <strong>Live tick-by-tick order stream</strong>
+                        </div>
+                        <div class="spec-item">
+                            REVERSE ENG
+                            <strong>Decrypted token handshakes</strong>
+                        </div>
+                        <div class="spec-item">
+                            FORMAT
+                            <strong>High-precision JSON schema</strong>
+                        </div>
+                        <div class="spec-item">
+                            RESILIENCE
+                            <strong>Sub-second auto-reconnect</strong>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <span class="project-tag">Equity Analytics</span>
+                        <span class="project-tag">FastAPI</span>
+                        <span class="project-tag">Market Depth</span>
+                    </div>
+                </article>
+
+                <!-- Project 3: Astha Canvas -->
+                <article class="project-card">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-title">
+                                <span>Astha Canvas</span>
+                            </div>
+                            <div class="project-subtitle" style="color: #38bdf8;">
+                                Retail POS for art stores with Gemini AI camera intake &amp; offline sync
+                            </div>
+                        </div>
+                        <span class="project-tag">React 19 &bull; Gemini AI &bull; Offline PWA</span>
+                    </div>
+
+                    <p class="project-desc">
+                        A real-world point-of-sale system for physical art stores. Instead of typing item names manually, store owners can snap a picture or speak into their mic &mdash; Google Gemini identifies the art supplies automatically! Features in-browser Wasm background removal, barcode scanning, eSewa QR billing, and continues running offline using IndexedDB when Nepal's internet drops.
+                    </p>
+
+                    <div class="project-specs">
+                        <div class="spec-item">
+                            AI INTAKE
+                            <strong>Voice &amp; Vision via Gemini API</strong>
+                        </div>
+                        <div class="spec-item">
+                            ON-DEVICE AI
+                            <strong>Client Wasm background removal</strong>
+                        </div>
+                        <div class="spec-item">
+                            NEPAL-READY
+                            <strong>Offline-first Dexie.js sync</strong>
+                        </div>
+                        <div class="spec-item">
+                            PAYMENTS
+                            <strong>eSewa QR &amp; thermal printing</strong>
+                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <span class="project-tag">React 19</span>
+                        <span class="project-tag">Dexie.js</span>
+                        <span class="project-tag">Multimodal AI</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Replit Interactive Console Shell -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Interactive Console Shell</h2>
+                <div class="section-meta">bash 5.2</div>
+            </div>
+
+            <div class="terminal-box">
+                <div class="terminal-bar">
+                    <div class="terminal-dots">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                    </div>
+                    <div>shroudbean@biratnagar:~$</div>
+                    <div>xterm-256color</div>
                 </div>
 
-                <!-- Replit Dashboard Metrics Grid (Inspired by rewards dashboard stats) -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="glass-panel p-4 flex flex-col gap-1">
-                        <div class="flex items-center justify-between text-zinc-400 text-xs">
-                            <span class="font-mono text-[11px] uppercase tracking-wider">Primary Stack</span>
-                            <i data-lucide="cpu" class="w-3.5 h-3.5 text-orange-400"></i>
-                        </div>
-                        <div class="text-lg sm:text-xl font-bold text-white mt-1">Go &bull; Python</div>
-                        <div class="text-[11px] text-zinc-400">TypeScript &amp; CDP</div>
-                    </div>
-
-                    <div class="glass-panel p-4 flex flex-col gap-1">
-                        <div class="flex items-center justify-between text-zinc-400 text-xs">
-                            <span class="font-mono text-[11px] uppercase tracking-wider">Flagship Build</span>
-                            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
-                        </div>
-                        <div class="text-lg sm:text-xl font-bold text-white mt-1">Macro R</div>
-                        <div class="text-[11px] text-amber-400/90 font-mono">Zero-Detection Bot</div>
-                    </div>
-
-                    <div class="glass-panel p-4 flex flex-col gap-1">
-                        <div class="flex items-center justify-between text-zinc-400 text-xs">
-                            <span class="font-mono text-[11px] uppercase tracking-wider">AI Co-Pilot</span>
-                            <i data-lucide="bot" class="w-3.5 h-3.5 text-purple-400"></i>
-                        </div>
-                        <div class="text-lg sm:text-xl font-bold text-white mt-1">Antigravity</div>
-                        <div class="text-[11px] text-zinc-400">Google DeepMind Agent</div>
-                    </div>
-
-                    <div class="glass-panel p-4 flex flex-col gap-1">
-                        <div class="flex items-center justify-between text-zinc-400 text-xs">
-                            <span class="font-mono text-[11px] uppercase tracking-wider">Status / Origin</span>
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
-                        </div>
-                        <div class="text-lg sm:text-xl font-bold text-emerald-400 mt-1">Active 🇳🇵</div>
-                        <div class="text-[11px] text-zinc-400">Biratnagar (UTC+5:45)</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECTION 2: INTERACTIVE TERMINAL SHELL (Replit Console Style) -->
-            <section id="terminal" class="space-y-3 max-w-5xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
-                        <h2 class="text-sm font-semibold tracking-wide uppercase font-mono text-zinc-300">Interactive Shell &bull; bash 5.2</h2>
-                    </div>
-                    <span class="text-[11px] font-mono text-zinc-500">shroudbean@biratnagar</span>
-                </div>
-
-                <div class="glass-panel p-0 overflow-hidden font-mono border-zinc-800">
-                    <!-- Terminal Title Bar -->
-                    <div class="px-4 py-2.5 bg-zinc-900/90 border-b border-zinc-800 flex items-center justify-between select-none">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                            <span class="text-xs text-zinc-400 ml-2 font-medium">terminal &mdash; sh</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-[11px] text-zinc-500">
-                            <span>xterm-256color</span>
-                        </div>
-                    </div>
-
-                    <!-- Terminal Output Window -->
-                    <div class="p-4 sm:p-5 text-xs text-zinc-300 bg-[#06070a]/90 space-y-3 max-h-72 overflow-y-auto" id="termBody">
-                        <pre id="termOutput" class="whitespace-pre-wrap font-mono leading-relaxed text-zinc-300">Welcome to Avinash's Replit interactive terminal! 🚀
+                <div class="terminal-screen" id="termBody">
+                    <div id="termOutput">Welcome to Avinash's interactive shell! 🚀
 Type a command below or tap any quick chip to run:
 &bull; whoami     - who is Avinash Poudel?
 &bull; antigravity - how this architecture was built
-&bull; projects   - overview of working systems
-&bull; ping       - test network latency to Biratnagar
-&bull; chiya      - brew a hot cup of Nepali tea</pre>
-                        
-                        <div class="flex items-center gap-2 pt-1 border-t border-zinc-900">
-                            <span class="text-emerald-400 font-bold">$</span>
-                            <input type="text" id="termInput" class="w-full bg-transparent border-0 outline-none text-zinc-100 font-mono text-xs placeholder:text-zinc-600 focus:ring-0" placeholder="try typing 'whoami' or 'antigravity'..." autocomplete="off" spellcheck="false">
-                        </div>
-                    </div>
+&bull; projects   - what I've made
+&bull; ping       - test latency to Biratnagar</div>
 
-                    <!-- Quick Command Chips Bar -->
-                    <div class="px-4 py-2.5 bg-zinc-900/60 border-t border-zinc-800/80 flex items-center gap-1.5 flex-wrap text-xs">
-                        <span class="text-[11px] text-zinc-500 font-mono mr-1">Quick run:</span>
-                        <button onclick="runCmd('whoami')" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] transition-colors">whoami</button>
-                        <button onclick="runCmd('antigravity')" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] transition-colors">antigravity</button>
-                        <button onclick="runCmd('projects')" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] transition-colors">projects</button>
-                        <button onclick="runCmd('ping')" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-[11px] transition-colors">ping</button>
-                        <button onclick="runCmd('chiya')" class="px-2 py-0.5 rounded bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 font-mono text-[11px] transition-colors">chiya ☕</button>
-                        <button onclick="runCmd('clear')" class="px-2 py-0.5 rounded bg-zinc-800/50 hover:bg-zinc-700 text-zinc-500 font-mono text-[11px] transition-colors ml-auto">clear</button>
+                    <div class="terminal-prompt-line">
+                        <span class="terminal-prompt-char">$</span>
+                        <input type="text" id="termInput" class="terminal-input" placeholder="try typing 'whoami' or 'antigravity'..." autocomplete="off" spellcheck="false">
                     </div>
                 </div>
-            </section>
 
-            <!-- SECTION 3: FEATURED PROJECTS WORKBENCH -->
-            <section id="projects" class="space-y-6 max-w-5xl">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="layers" class="w-4 h-4 text-orange-400"></i>
-                        <h2 class="text-sm font-semibold tracking-wide uppercase font-mono text-zinc-300">Featured Systems &amp; Engineering</h2>
-                    </div>
-                    <span class="text-xs text-zinc-500 font-mono">3 Production Engines</span>
+                <div class="terminal-chips">
+                    <span class="chip-label">Quick run:</span>
+                    <button class="chip-button" onclick="runCmd('whoami')">whoami</button>
+                    <button class="chip-button" onclick="runCmd('antigravity')">antigravity</button>
+                    <button class="chip-button" onclick="runCmd('projects')">projects</button>
+                    <button class="chip-button" onclick="runCmd('ping')">ping</button>
+                    <button class="chip-button" onclick="runCmd('chiya')">chiya ☕</button>
+                    <button class="chip-button" onclick="runCmd('clear')" style="margin-left: auto;">clear</button>
                 </div>
+            </div>
+        </section>
 
-                <!-- PROJECT 1: MACRO R (Flagship Engine) -->
-                <article class="glass-panel p-6 sm:p-8 space-y-5 border-orange-500/20 relative overflow-hidden">
-                    <div class="flex items-start justify-between flex-wrap gap-3">
-                        <div>
-                            <div class="flex items-center gap-2.5">
-                                <h3 class="text-2xl font-bold text-white tracking-tight">Macro R</h3>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-orange-500/15 text-orange-400 border border-orange-500/30">FLAGSHIP</span>
-                            </div>
-                            <p class="text-sm text-orange-400/90 font-medium mt-1">Autonomous Microsoft Rewards Orchestrator &bull; Read to Earn &bull; Zero Detection</p>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-zinc-900 border border-zinc-800 text-zinc-300">
-                            Pure Go &bull; CDP Stealth
-                        </span>
-                    </div>
-
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        My flagship automation engine! Built completely clean-room in pure Go without Puppeteer or Selenium. Communicates directly over Chrome DevTools Protocol (CDP) with randomized Bezier mouse curves and human-like typing delays so Microsoft can't flag it as a bot. Deployed on an Azure B1s cloud mesh behind Cloudflare Zero Trust with live noVNC virtual screens.
-                    </p>
-
-                    <!-- Spec Cards Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-                        <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                            <span class="text-[10px] font-mono uppercase text-zinc-500 block">Read To Earn</span>
-                            <span class="text-xs font-semibold text-zinc-200 mt-0.5 block">MSN News scroll pauses</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                            <span class="text-[10px] font-mono uppercase text-zinc-500 block">Autonomous</span>
-                            <span class="text-xs font-semibold text-zinc-200 mt-0.5 block">Desktop, Mobile &amp; Sets</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                            <span class="text-[10px] font-mono uppercase text-zinc-500 block">Operator Stream</span>
-                            <span class="text-xs font-semibold text-zinc-200 mt-0.5 block">SSE event stream alerts</span>
-                        </div>
-                        <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-                            <span class="text-[10px] font-mono uppercase text-zinc-500 block">Safety Protocol</span>
-                            <span class="text-xs font-semibold text-zinc-200 mt-0.5 block">Zero CAPTCHA risk</span>
-                        </div>
-                    </div>
-
-                    <!-- Fleet Pricing Notice -->
-                    <div class="p-3.5 rounded-xl bg-orange-950/20 border border-orange-500/25 flex items-center justify-between flex-wrap gap-2">
-                        <div class="text-xs text-zinc-300">
-                            <span class="text-orange-400 font-semibold">Nepal Fleet Subscriptions:</span>
-                            Starter <strong>750 NPR</strong> &bull; Pro <strong>1,500 NPR</strong> &bull; Dedicated <strong>2,500 NPR</strong> &bull; Fleet <strong>4,000 NPR</strong>
-                        </div>
-                        <a href="/pricing" class="text-xs font-semibold text-orange-400 hover:text-orange-300 flex items-center gap-1">
-                            <span>View All Plans</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="flex items-center gap-3 flex-wrap pt-1">
-                        <a href="/macror" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <span>Deep Dive Architecture</span>
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                        </a>
-                        <a href="/pricing" class="btn-secondary px-4 py-2 rounded-xl text-xs font-semibold text-orange-400 border-orange-500/30 hover:border-orange-500/50 flex items-center gap-2">
-                            <i data-lucide="credit-card" class="w-3.5 h-3.5"></i>
-                            <span>Pricing &amp; Plans</span>
-                        </a>
-                        <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener" class="btn-secondary px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2">
-                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                            <span>Open Cloud Gateway</span>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- PROJECT 2: NEPSE FINANCIAL SCRAPER -->
-                <article class="glass-panel p-6 sm:p-8 space-y-4">
-                    <div class="flex items-start justify-between flex-wrap gap-3">
-                        <div>
-                            <div class="flex items-center gap-2.5">
-                                <h3 class="text-xl font-bold text-white tracking-tight">NEPSE Financial Scraper &amp; Market Engine</h3>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">FINTECH</span>
-                            </div>
-                            <p class="text-sm text-emerald-400/90 font-medium mt-1">Reverse-engineering Nepal Stock Exchange's real-time order books &amp; floorsheets</p>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-zinc-900 border border-zinc-800 text-zinc-300">
-                            Python &bull; WebSockets &bull; Asyncio
-                        </span>
-                    </div>
-
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        Reversed NEPSE's encrypted token handshakes and real-time WebSocket stream to build an async Python engine that captures floor sheets, real-time market depths, and sector indices with zero rate-limit blocks. Output format feeds high-precision financial analysis dashboards.
-                    </p>
-
-                    <div class="flex items-center gap-2 flex-wrap text-xs text-zinc-400 font-mono">
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">Decrypted Handshakes</span>
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">Sub-second Reconnect</span>
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">FastAPI Exporter</span>
-                    </div>
-                </article>
-
-                <!-- PROJECT 3: ASTHA CANVAS POS -->
-                <article class="glass-panel p-6 sm:p-8 space-y-4">
-                    <div class="flex items-start justify-between flex-wrap gap-3">
-                        <div>
-                            <div class="flex items-center gap-2.5">
-                                <h3 class="text-xl font-bold text-white tracking-tight">Astha Canvas</h3>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">MULTIMODAL AI</span>
-                            </div>
-                            <p class="text-sm text-cyan-400/90 font-medium mt-1">Retail POS for an art store with Gemini AI camera intake &amp; offline sync</p>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono font-medium bg-zinc-900 border border-zinc-800 text-zinc-300">
-                            React 19 &bull; Gemini 2.0 &bull; Offline PWA
-                        </span>
-                    </div>
-
-                    <p class="text-sm text-zinc-300 leading-relaxed">
-                        A real-world point-of-sale system for physical art stores. Instead of typing item names manually, store owners can snap a picture or speak into their mic &mdash; Google Gemini identifies the art supplies automatically! Features client-side Wasm background removal, barcode scanning, eSewa QR billing, and offline Dexie.js sync when Nepal's internet drops.
-                    </p>
-
-                    <div class="flex items-center gap-2 flex-wrap text-xs text-zinc-400 font-mono">
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">Voice &amp; Vision Intake</span>
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">On-Device Wasm AI</span>
-                        <span class="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800">eSewa QR Generation</span>
-                    </div>
-                </article>
-            </section>
-
-            <!-- SECTION 4: DEVELOPER SETUP & PHILOSOPHY -->
-            <section id="toolkit" class="space-y-4 max-w-5xl">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
-                    <h2 class="text-sm font-semibold tracking-wide uppercase font-mono text-zinc-300">Builder Philosophy &amp; Stack</h2>
+        <!-- Chiya Easter Egg -->
+        <div class="chiya-container">
+            <div>
+                <div style="font-size: 1.05rem; font-weight: 700; color: #ffffff; margin-bottom: 0.25rem;">
+                    Enjoying the systems? Send a cup of Chiya! ☕
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                    <div class="glass-panel p-5 space-y-2">
-                        <div class="text-2xl">🎒</div>
-                        <div class="font-bold text-white text-sm">Class 11 Student</div>
-                        <p class="text-xs text-zinc-400 leading-relaxed">Studying high school CS in Biratnagar, Nepal. I learn best by building real working systems instead of just textbook theory.</p>
-                    </div>
-
-                    <div class="glass-panel p-5 space-y-2">
-                        <div class="text-2xl">🛸</div>
-                        <div class="font-bold text-white text-sm">Antigravity Co-Pilot</div>
-                        <p class="text-xs text-zinc-400 leading-relaxed">I pair program with Google DeepMind's Antigravity agentic coding assistant to brainstorm architectures and test hypotheses.</p>
-                    </div>
-
-                    <div class="glass-panel p-5 space-y-2">
-                        <div class="text-2xl">⚡</div>
-                        <div class="font-bold text-white text-sm">Clean-Room / Zero Bloat</div>
-                        <p class="text-xs text-zinc-400 leading-relaxed">Single statically-linked Go binaries, zero bloated node_modules folders, and writing directly against official browser protocols.</p>
-                    </div>
-
-                    <div class="glass-panel p-5 space-y-2">
-                        <div class="text-2xl">☕</div>
-                        <div class="font-bold text-white text-sm">Fueled by Chiya</div>
-                        <p class="text-xs text-zinc-400 leading-relaxed">Hot Nepali milk tea, terminal logs, and a weird network protocol to inspect &mdash; that's my ideal coding evening.</p>
-                    </div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                    Virtual tea counter to keep a Grade 11 student coding into the night.
                 </div>
-            </section>
-
-            <!-- SECTION 5: CHIYA COUNTER (Easter Egg) -->
-            <section id="chiya" class="max-w-5xl">
-                <div class="glass-panel p-6 sm:p-7 flex items-center justify-between flex-wrap gap-4 border-amber-500/20 bg-gradient-to-r from-amber-500/5 via-orange-500/5 to-transparent">
-                    <div class="space-y-1">
-                        <div class="flex items-center gap-2">
-                            <span class="text-xl">☕</span>
-                            <h3 class="text-base font-bold text-white">Enjoying the projects? Send a cup of Chiya!</h3>
-                        </div>
-                        <p class="text-xs text-zinc-400">Virtual tea counter to keep a Grade 11 student coding into the night.</p>
-                    </div>
-
-                    <button onclick="addChiya()" class="btn-primary px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-3 transition-transform active:scale-95 shadow-md">
-                        <span>Brew Chiya</span>
-                        <span id="chiyaCount" class="bg-black/30 px-2 py-0.5 rounded-full font-mono text-[11px] text-amber-200">142</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- WORKSPACE FOOTER -->
-            <footer class="pt-6 border-t border-zinc-800/40 flex items-center justify-between flex-wrap gap-4 text-xs font-mono text-zinc-500 max-w-5xl select-none pb-12">
-                <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Biratnagar, Nepal 🇳🇵</div>
-                <div class="flex items-center gap-4 flex-wrap">
-                    <a href="/macror" class="hover:text-zinc-300 transition-colors">Macro R</a>
-                    <a href="/pricing" class="hover:text-zinc-300 transition-colors">Pricing</a>
-                    <a href="https://rewards.avinashpoudel.com.np/" target="_blank" class="hover:text-zinc-300 transition-colors">Rewards Gateway</a>
-                    <a href="https://github.com/shroudbean" target="_blank" class="hover:text-zinc-300 transition-colors">GitHub</a>
-                    <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" class="hover:text-zinc-300 transition-colors">LinkedIn</a>
-                    <a href="https://x.com/shroudbean" target="_blank" class="hover:text-zinc-300 transition-colors">X</a>
-                    <a href="https://dev.to/shroudbean" target="_blank" class="hover:text-zinc-300 transition-colors">Dev.to</a>
-                    <a href="https://www.instagram.com/its_infyavi/" target="_blank" class="hover:text-zinc-300 transition-colors">Instagram</a>
-                </div>
-            </footer>
+            </div>
+            <button class="chiya-btn" onclick="addChiya()">
+                <span>Brew Chiya</span>
+                <span id="chiyaCount" class="chiya-count-badge">142</span>
+            </button>
         </div>
-    </main>
 
-    <!-- Interactive Scripts -->
+        <!-- Sleek Minimal Footer -->
+        <footer>
+            <div>&copy; 2026 Avinash Poudel (@shroudbean) &bull; Biratnagar, Nepal 🇳🇵</div>
+            <div style="display: flex; gap: 1.15rem; flex-wrap: wrap;">
+                <a href="/macror">Macro R</a>
+                <a href="/pricing">Pricing</a>
+                <a href="https://rewards.avinashpoudel.com.np/" target="_blank" rel="noopener">Gateway</a>
+                <a href="https://github.com/shroudbean" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/avinash-poudel-327777306/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://x.com/shroudbean" target="_blank" rel="noopener">X</a>
+                <a href="https://dev.to/shroudbean" target="_blank" rel="noopener">Dev.to</a>
+                <a href="https://www.instagram.com/its_infyavi/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
-        // Chiya Counter with LocalStorage
+        // Chiya Counter
         var count = 142;
         try {
             var stored = localStorage.getItem('chiya_count');
@@ -775,9 +1136,14 @@ Type a command below or tap any quick chip to run:
             count++;
             document.getElementById('chiyaCount').innerText = count;
             try { localStorage.setItem('chiya_count', count); } catch(e) {}
+            var btn = document.querySelector('.chiya-btn');
+            if (btn) {
+                btn.style.transform = 'scale(1.08)';
+                setTimeout(function() { btn.style.transform = ''; }, 150);
+            }
         }
 
-        // Terminal Shell Simulator
+        // Terminal Shell
         var commands = {
             'whoami': 'Avinash Poudel (@shroudbean)\nClass 11 Computer Science student based in Biratnagar, Nepal 🇳🇵\nPassionate about low-level browser automation, web scraping, and distributed systems.\nCo-coding with Antigravity!',
             'antigravity': 'Antigravity is Google DeepMind\'s agentic AI coding companion.\nIt runs directly with me in this workspace & on Azure, helping turn ideas into battle-tested Go and Python code.',
@@ -817,42 +1183,6 @@ Type a command below or tap any quick chip to run:
                 if (e.key === 'Enter') {
                     runCmd(termInput.value);
                 }
-            });
-        }
-
-        // Theme Toggle (Dark / Light)
-        function toggleTheme() {
-            var html = document.documentElement;
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Active link tracking on scroll
-        var navLinks = document.querySelectorAll('.nav-link');
-        var sections = document.querySelectorAll('section');
-        var scrollContainer = document.getElementById('scroll-container');
-
-        if (scrollContainer) {
-            scrollContainer.addEventListener('scroll', function() {
-                var fromTop = scrollContainer.scrollTop + 100;
-                sections.forEach(function(sec) {
-                    if (sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop) {
-                        navLinks.forEach(function(link) {
-                            if (link.getAttribute('href') === '#' + sec.id) {
-                                link.classList.add('active');
-                            } else {
-                                link.classList.remove('active');
-                            }
-                        });
-                    }
-                });
             });
         }
     </script>
