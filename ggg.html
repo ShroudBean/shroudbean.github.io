@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Macro R • Flagship Operations Studio</title>
+
+    <!-- Tailwind CDN with dark mode support -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Big Tech Typography: Inter / Plus Jakarta Sans / JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+              mono: ['JetBrains Mono', 'SF Mono', 'Menlo', 'monospace'],
+            },
+            colors: {
+              brand: {
+                50: '#fff7ed',
+                500: '#f97316',
+                600: '#ea580c',
+                700: '#c2410c',
+                accent: '#ff8a3d',
+                glow: 'rgba(249, 115, 22, 0.45)'
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      /* Smooth Scrolling & Custom Micro Scrollbars */
+      * { scroll-behavior: smooth; }
+      ::-webkit-scrollbar { width: 5px; height: 5px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+
+      /* Base Body Theme Styles */
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #050608;
+        color: #f1f5f9;
+        overflow: hidden;
+        user-select: none;
+        transition: background-color 0.4s ease, color 0.4s ease;
+      }
+
+      /* 🍏 THEME 1: Apple macOS / visionOS Liquid Glass */
+      body.theme-apple {
+        background-color: #06070b;
+        background-image: 
+          radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.14) 0%, transparent 60%),
+          radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 45%);
+      }
+      body.theme-apple .glass-panel {
+        background: rgba(18, 22, 34, 0.65);
+        backdrop-filter: blur(36px) saturate(190%);
+        -webkit-backdrop-filter: blur(36px) saturate(190%);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        border-radius: 1.15rem;
+      }
+      body.theme-apple .glass-card {
+        background: rgba(10, 13, 22, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 0.95rem;
+      }
+
+      /* 🪟 THEME 2: Microsoft Fluent 2 Mica & Acrylic */
+      body.theme-microsoft {
+        background-color: #0b0d13;
+        background-image: 
+          linear-gradient(180deg, rgba(20, 27, 45, 0.5) 0%, #080a0f 100%),
+          radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 100% 100%, 24px 24px;
+      }
+      body.theme-microsoft .glass-panel {
+        background: rgba(22, 27, 39, 0.82);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        border-radius: 0.75rem;
+      }
+      body.theme-microsoft .glass-card {
+        background: rgba(15, 19, 29, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 0.5rem;
+      }
+
+      /* 🌐 THEME 3: Google DeepMind Quantum Obsidian */
+      body.theme-google {
+        background-color: #030407;
+        background-image: 
+          radial-gradient(ellipse 80% 50% at 50% -10%, rgba(249, 115, 22, 0.18), transparent 70%),
+          radial-gradient(circle at 100% 100%, rgba(14, 165, 233, 0.07) 0%, transparent 50%),
+          radial-gradient(rgba(249, 115, 22, 0.06) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 32px 32px;
+      }
+      body.theme-google .glass-panel {
+        background: rgba(11, 14, 23, 0.88);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border: 1px solid rgba(249, 115, 22, 0.18);
+        box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(249, 115, 22, 0.2);
+        border-radius: 1.25rem;
+      }
+      body.theme-google .glass-card {
+        background: rgba(7, 9, 15, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+      }
+
+      /* Big Tech Button Springs */
+      .action-spring {
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, background 0.18s ease;
+      }
+      .action-spring:hover {
+        transform: translateY(-1.5px);
+      }
+      .action-spring:active {
+        transform: translateY(0.5px) scale(0.98);
+      }
+
+      /* Apple Pill Toggle */
+      .pill-segment {
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .pill-segment.active {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      }
+
+      /* Breathing Live Indicators */
+      @keyframes breathe {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.35; transform: scale(0.85); }
+      }
+      .live-breathe {
+        animation: breathe 2.2s infinite ease-in-out;
+      }
+
+      /* Ripple scanline effect for terminal & mock browser */
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(1000%); }
+      }
+      .scanline-bar {
+        animation: scanline 8s linear infinite;
+      }
+    </style>
+</head>
+<body class="theme-apple flex h-screen overflow-hidden antialiased selection:bg-orange-500/30 selection:text-orange-200">
+
+    <!-- FLOATING RAYCAST / SPOTLIGHT COMMAND PALETTE (CMD+K) -->
+    <div id="commandPalette" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-start justify-center pt-24 px-4 opacity-0 pointer-events-none transition-all duration-200">
+        <div class="glass-panel w-full max-w-xl overflow-hidden shadow-2xl border border-white/15 scale-95 transition-transform duration-200" id="paletteBox">
+            <div class="p-4 border-b border-white/10 flex items-center gap-3">
+                <i data-lucide="search" class="w-5 h-5 text-orange-400"></i>
+                <input id="paletteInput" type="text" placeholder="Type a command or jump to account (e.g. 'run', 'bishnu', 'speed', 'logs')..." 
+                       class="w-full bg-transparent text-white text-sm outline-none placeholder:text-zinc-500 font-medium">
+                <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-white/10 text-zinc-400 border border-white/10">ESC</span>
+            </div>
+            <div class="p-2 max-h-80 overflow-y-auto space-y-1 text-xs" id="paletteResults">
+                <div onclick="executeCommand('run_all')" class="flex items-center justify-between p-2.5 rounded-lg hover:bg-orange-500/15 hover:text-white text-zinc-300 cursor-pointer group">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="play" class="w-4 h-4 text-orange-400 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-semibold">Dispatch All Pending Searches Now</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-zinc-500">Fast Execution</span>
+                </div>
+                <div onclick="executeCommand('select_1')" class="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/10 hover:text-white text-zinc-300 cursor-pointer">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="user" class="w-4 h-4 text-emerald-400"></i>
+                        <span>Switch to Account 1: <strong>Bishnu Poudel</strong> (11,731 PTS)</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-zinc-500">Jump</span>
+                </div>
+                <div onclick="executeCommand('select_2')" class="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/10 hover:text-white text-zinc-300 cursor-pointer">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="user" class="w-4 h-4 text-blue-400"></i>
+                        <span>Switch to Account 2: <strong>Aayush Sharma</strong> (5,840 PTS)</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-zinc-500">Jump</span>
+                </div>
+                <div onclick="executeCommand('live_screen')" class="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/10 hover:text-white text-zinc-300 cursor-pointer">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="monitor" class="w-4 h-4 text-amber-400"></i>
+                        <span>Open Live noVNC Browser Stream</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-zinc-500">Preview</span>
+                </div>
+                <div onclick="executeCommand('toggle_pause')" class="flex items-center justify-between p-2.5 rounded-lg hover:bg-white/10 hover:text-white text-zinc-300 cursor-pointer">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="pause" class="w-4 h-4 text-rose-400"></i>
+                        <span>Pause / Resume Automation Engine</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-zinc-500">Safety</span>
+                </div>
+            </div>
+            <div class="px-4 py-2 border-t border-white/5 bg-black/40 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+                <span>Navigate &uarr;&darr; &bull; Enter to execute</span>
+                <span>Macro R Operations Gateway</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION HUD -->
+    <div id="toastHUD" class="fixed top-5 right-5 z-50 flex items-center gap-3 px-4 py-3 rounded-2xl glass-panel shadow-2xl border border-white/15 translate-y-[-120%] opacity-0 pointer-events-none transition-all duration-300">
+        <div id="toastIconContainer" class="w-8 h-8 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400">
+            <i data-lucide="sparkles" class="w-4 h-4" id="toastIcon"></i>
+        </div>
+        <div>
+            <div id="toastTitle" class="text-xs font-bold text-white tracking-wide">Operation Executed</div>
+            <div id="toastMessage" class="text-[11px] text-zinc-400 font-mono">Telemetry updated across cloud cluster</div>
+        </div>
+    </div>
+
+    <!-- MAIN APP LAYOUT: SIDEBAR + CONTENT -->
+    <div class="flex h-screen w-screen overflow-hidden">
+        
+        <!-- SIDEBAR (Apple / Microsoft Studio Navigation) -->
+        <aside class="w-64 border-r border-white/8 flex flex-col justify-between py-5 hidden md:flex shrink-0 relative z-20 bg-[#07090f]/70 backdrop-blur-2xl">
+            
+            <div class="space-y-6">
+                <!-- Brand & Architecture Header -->
+                <div class="px-5 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-400 p-0.5 shadow-[0_0_20px_rgba(249,115,22,0.45)]">
+                            <div class="w-full h-full bg-[#090b12] rounded-[14px] flex items-center justify-center">
+                                <i data-lucide="zap" class="w-4 h-4 text-orange-400 fill-orange-400"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-extrabold text-sm tracking-tight text-white">Macro R</span>
+                                <span class="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-orange-500/20 text-orange-400 border border-orange-500/30">PRO</span>
+                            </div>
+                            <span class="text-[10px] text-zinc-500 font-mono">v2.6 &bull; Cloud Gateway</span>
+                        </div>
+                    </div>
+
+                    <!-- Spotlight Shortcut Pill -->
+                    <button onclick="toggleCommandPalette(true)" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/5 text-[10px] font-mono flex items-center gap-1" title="Spotlight Command (Ctrl+K)">
+                        <span>&#8984;K</span>
+                    </button>
+                </div>
+
+                <!-- Primary Action Quick Launch -->
+                <div class="px-4 space-y-2">
+                    <button onclick="triggerImmediateRunAll()" class="w-full action-spring py-2.5 px-3 rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(234,88,12,0.35)] border border-orange-400/30">
+                        <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                        <span>Dispatch Next Batch</span>
+                    </button>
+
+                    <button onclick="openLiveBrowserModal()" class="w-full action-spring py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 font-semibold text-xs flex items-center justify-between border border-white/5">
+                        <span class="flex items-center gap-2">
+                            <i data-lucide="cast" class="w-3.5 h-3.5 text-orange-400"></i>
+                            <span>Live Browser Node</span>
+                        </span>
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 live-breathe"></span>
+                    </button>
+                </div>
+
+                <!-- Section Navigation -->
+                <div class="px-3 space-y-1">
+                    <div class="px-3 pb-1 text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-mono">Operations Deck</div>
+                    
+                    <button onclick="switchDeckTab('fleet')" id="nav-fleet" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold bg-white/10 text-white border-l-2 border-orange-500 transition-colors">
+                        <span class="flex items-center gap-2.5">
+                            <i data-lucide="layout-grid" class="w-4 h-4 text-orange-400"></i>
+                            <span>Fleet Command</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-zinc-400 bg-black/40 px-1.5 py-0.5 rounded">4 active</span>
+                    </button>
+
+                    <button onclick="switchDeckTab('telemetry')" id="nav-telemetry" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <span class="flex items-center gap-2.5">
+                            <i data-lucide="activity" class="w-4 h-4"></i>
+                            <span>Points Analytics</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-emerald-400">+69 PTS</span>
+                    </button>
+
+                    <button onclick="switchDeckTab('stealth')" id="nav-stealth" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <span class="flex items-center gap-2.5">
+                            <i data-lucide="fingerprint" class="w-4 h-4 text-purple-400"></i>
+                            <span>Bypass &amp; CDP Matrix</span>
+                        </span>
+                        <span class="text-[10px] font-mono text-purple-400">100% Clean</span>
+                    </button>
+
+                    <button onclick="switchDeckTab('console')" id="nav-console" class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors">
+                        <span class="flex items-center gap-2.5">
+                            <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Live Engine Logs</span>
+                        </span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-breathe"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tailscale Network & Health Footer -->
+            <div class="px-4 space-y-3">
+                <!-- Design Lens Selector (Apple / Microsoft / Google) -->
+                <div class="p-2.5 rounded-xl bg-black/40 border border-white/5 space-y-1.5">
+                    <span class="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest block">Design System Lens</span>
+                    <div class="grid grid-cols-3 gap-1">
+                        <button onclick="setTheme('apple')" id="themeBtn-apple" class="pill-segment active text-[10px] font-semibold py-1 rounded-lg text-center" title="Apple visionOS Liquid Glass">
+                            🍏 Apple
+                        </button>
+                        <button onclick="setTheme('microsoft')" id="themeBtn-microsoft" class="pill-segment text-[10px] font-semibold py-1 rounded-lg text-zinc-400 text-center" title="Microsoft Fluent 2 Mica">
+                            🪟 Fluent
+                        </button>
+                        <button onclick="setTheme('google')" id="themeBtn-google" class="pill-segment text-[10px] font-semibold py-1 rounded-lg text-zinc-400 text-center" title="Google DeepMind Ops">
+                            🌐 Gemini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mesh IP Status -->
+                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-between">
+                    <div>
+                        <div class="flex items-center gap-1.5 text-[11px] font-bold text-zinc-200">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 live-breathe shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                            <span>Dish Media (NP)</span>
+                        </div>
+                        <span class="text-[10px] text-zinc-500 font-mono">103.191.131.42 &bull; 18ms</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">TAILSCALE</span>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN OPERATIONAL VIEWPORT -->
+        <main class="flex-1 flex flex-col h-full overflow-hidden relative">
+            
+            <!-- TOP APP BAR / COMMAND HEADER -->
+            <header class="h-16 border-b border-white/8 flex items-center justify-between px-4 sm:px-6 md:px-8 bg-[#07090f]/60 backdrop-blur-xl shrink-0 z-10">
+                <div class="flex items-center gap-3">
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-sm sm:text-base font-extrabold text-white tracking-tight">Macro R Operations Fleet</h1>
+                            <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-breathe"></span>
+                                <span id="headerEngineStatus">Automation Engine Active</span>
+                            </span>
+                        </div>
+                        <span class="text-[11px] text-zinc-400 hidden sm:block">Automated stealth execution across 4 parallel browser instances</span>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Search Bar / Raycast Trigger -->
+                    <button onclick="toggleCommandPalette(true)" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-zinc-200 text-xs border border-white/5 transition-all">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span>Search actions...</span>
+                        <span class="text-[10px] font-mono bg-white/10 px-1 rounded text-zinc-300">Ctrl+K</span>
+                    </button>
+
+                    <!-- Pause / Resume Switch -->
+                    <button onclick="toggleAutomationState()" id="globalPauseBtn" class="action-spring px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-zinc-300 flex items-center gap-2">
+                        <i data-lucide="pause" class="w-3.5 h-3.5 text-amber-400" id="globalPauseIcon"></i>
+                        <span id="globalPauseText">Pause Automation</span>
+                    </button>
+
+                    <!-- Add Account Button -->
+                    <button onclick="openAddAccountModal()" class="action-spring px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-[0_2px_12px_rgba(249,115,22,0.3)]">
+                        <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Add Account</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- SCROLLABLE CANVAS -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 space-y-6 pb-20" id="mainCanvas">
+                
+                <!-- DYNAMIC TOP SMART SCHEDULE BANNER -->
+                <div id="smartBanner" class="glass-panel p-4 sm:p-5 flex items-center justify-between flex-wrap gap-4 border-amber-500/20 bg-gradient-to-r from-orange-500/10 via-amber-500/5 to-transparent transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-2xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 shrink-0 shadow-[0_0_15px_rgba(249,115,22,0.25)]">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 live-breathe"></span>
+                                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">
+                                    Next Execution Session: <span class="text-orange-400 font-mono" id="bannerCountdown">in 12 min 40s (at 8:56 PM)</span>
+                                </span>
+                            </div>
+                            <p class="text-xs text-zinc-400 mt-0.5">
+                                <strong class="text-zinc-200" id="bannerAccountTarget">Bishnu Poudel</strong> scheduled for 2 natural desktop queries (+6 PTS). Paced to avoid bot detection.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="triggerImmediateRunAll()" class="action-spring px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+                            <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                            <span>Run Immediately</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BIG TECH TELEMETRY METRICS GRID (4 CARDS) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Card 1: Total Fleet Balance -->
+                    <div class="glass-panel p-5 relative overflow-hidden group hover:border-orange-500/30 transition-all">
+                        <div class="flex items-center justify-between text-xs text-zinc-400">
+                            <span class="font-mono uppercase tracking-wider text-[11px] font-semibold">Total Fleet Balance</span>
+                            <div class="w-7 h-7 rounded-lg bg-orange-500/15 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                                <i data-lucide="coins" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-3xl font-extrabold text-white font-mono tracking-tight flex items-baseline gap-2">
+                                <span id="fleetTotalPoints">27,025</span>
+                                <span class="text-xs font-bold text-orange-400">PTS</span>
+                            </div>
+                            <span class="text-[11px] text-zinc-400 mt-1 block">&asymp; NPR 3,240 / $24.30 Gift Value</span>
+                        </div>
+                        <!-- Mini sparkline bar -->
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-3">
+                            <div class="h-full bg-gradient-to-r from-orange-500 to-amber-400 rounded-full transition-all duration-500" id="fleetBalanceBar" style="width: 82%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Fleet Status -->
+                    <div class="glass-panel p-5 relative overflow-hidden group hover:border-emerald-500/30 transition-all">
+                        <div class="flex items-center justify-between text-xs text-zinc-400">
+                            <span class="font-mono uppercase tracking-wider text-[11px] font-semibold">Enrolled Accounts</span>
+                            <div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-3xl font-extrabold text-white font-mono tracking-tight flex items-baseline gap-2">
+                                <span id="fleetAccountRatio">4 / 4</span>
+                                <span class="text-xs font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-500/15">Optimal</span>
+                            </div>
+                            <span class="text-[11px] text-zinc-400 mt-1 block">0 flagged &bull; 0 cooldown restrictions</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-3">
+                            <div class="h-full bg-emerald-400 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Today's Points Harvested -->
+                    <div class="glass-panel p-5 relative overflow-hidden group hover:border-amber-500/30 transition-all">
+                        <div class="flex items-center justify-between text-xs text-zinc-400">
+                            <span class="font-mono uppercase tracking-wider text-[11px] font-semibold">Today's Harvest</span>
+                            <div class="w-7 h-7 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                                <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-3xl font-extrabold text-white font-mono tracking-tight flex items-baseline gap-2">
+                                <span id="todayPointsGathered">69</span>
+                                <span class="text-xs text-zinc-500 font-normal">/ 105 PTS</span>
+                            </div>
+                            <span class="text-[11px] text-amber-400 font-semibold mt-1 block" id="remainingPointsText">+36 PTS remaining for today</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-3">
+                            <div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500" id="todayProgressBar" style="width: 65%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Cluster Health & Latency -->
+                    <div class="glass-panel p-5 relative overflow-hidden group hover:border-blue-500/30 transition-all">
+                        <div class="flex items-center justify-between text-xs text-zinc-400">
+                            <span class="font-mono uppercase tracking-wider text-[11px] font-semibold">Mesh Latency</span>
+                            <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                                <i data-lucide="network" class="w-3.5 h-3.5"></i>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="text-3xl font-extrabold text-white font-mono tracking-tight flex items-baseline gap-2">
+                                <span>18 <span class="text-xs text-zinc-500 font-normal">ms</span></span>
+                                <span class="text-xs font-bold text-blue-400 px-2 py-0.5 rounded-full bg-blue-500/15">Dish Media</span>
+                            </div>
+                            <span class="text-[11px] text-zinc-400 mt-1 block">Kathmandu Subnet &bull; Tailscale WireGuard</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-3">
+                            <div class="h-full bg-blue-400 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- INTERACTIVE ACCOUNT SELECTOR & WORKSPACE -->
+                <div class="space-y-4">
+                    
+                    <!-- Segmented Account Tabs (Apple / Microsoft Style) -->
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                        <div class="flex items-center gap-1.5 p-1 rounded-2xl bg-black/40 border border-white/5 overflow-x-auto max-w-full">
+                            <button onclick="selectAccount(1)" id="accTab-1" class="px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-white/10 text-white shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                                <span>Account 1 &bull; Bishnu Poudel</span>
+                            </button>
+                            <button onclick="selectAccount(2)" id="accTab-2" class="px-4 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white transition-all flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                                <span>Account 2 &bull; Aayush</span>
+                            </button>
+                            <button onclick="selectAccount(3)" id="accTab-3" class="px-4 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white transition-all flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                                <span>Account 3 &bull; Sita</span>
+                            </button>
+                            <button onclick="selectAccount(4)" id="accTab-4" class="px-4 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white transition-all flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                                <span>Account 4 &bull; Rohan</span>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="text-zinc-500 font-mono text-[11px]">Stealth Engine:</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
+                                NATURAL BEZIER v2.6
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- ACTIVE ACCOUNT DETAILS HERO PANEL -->
+                    <div class="glass-panel p-6 space-y-6">
+                        
+                        <!-- Account Title Row -->
+                        <div class="flex items-center justify-between flex-wrap gap-4 pb-5 border-b border-white/8">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-500 to-amber-500 flex items-center justify-center text-white font-extrabold text-lg font-mono shadow-[0_0_20px_rgba(249,115,22,0.3)]" id="activeAccountAvatar">
+                                    1
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2.5">
+                                        <h2 class="text-lg font-extrabold text-white tracking-tight" id="activeAccountName">Account 1 &mdash; Bishnu Poudel</h2>
+                                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30" id="activeAccountStatus">
+                                            CONNECTED &bull; ACTIVE
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-zinc-400 font-mono mt-1">
+                                        <span class="flex items-center gap-1"><i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-500"></i> <span id="activeAccountLocale">ne &bull; Asia/Kathmandu</span></span>
+                                        <span>&bull;</span>
+                                        <span class="text-orange-400 font-bold" id="activeAccountPoints">11,731 PTS Balance</span>
+                                        <span>&bull;</span>
+                                        <span class="text-emerald-400" id="activeAccountStreakLabel">Clean Streak: 2 / 14 Days</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actions for this Account -->
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="runSingleAccountSession()" class="action-spring px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 text-white font-bold text-xs flex items-center gap-2 shadow-lg">
+                                    <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                                    <span id="runSingleAccountBtnText">Run Session Now</span>
+                                </button>
+                                <button onclick="openLiveBrowserModal()" class="action-spring p-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/5" title="Watch Headless Chrome Tab">
+                                    <i data-lucide="cast" class="w-4 h-4 text-orange-400"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2-Column Core Breakdown -->
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                            
+                            <!-- LEFT COLUMN: Search Quota & Real-time Execution (7 Cols) -->
+                            <div class="lg:col-span-7 glass-card p-5 space-y-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between text-xs mb-2">
+                                        <span class="font-bold text-zinc-200 flex items-center gap-2 font-mono tracking-wider text-[11px]">
+                                            <i data-lucide="search" class="w-4 h-4 text-orange-400"></i>
+                                            DAILY SEARCH QUOTA
+                                        </span>
+                                        <span class="font-mono font-bold text-orange-400 text-sm" id="searchQuotaDisplay">
+                                            24 <span class="text-zinc-500 font-normal">/ 30 PTS</span>
+                                        </span>
+                                    </div>
+
+                                    <!-- Progress Bar -->
+                                    <div class="h-2.5 w-full bg-black/60 rounded-full overflow-hidden p-0.5 border border-white/10">
+                                        <div class="h-full bg-gradient-to-r from-orange-500 via-amber-400 to-amber-300 rounded-full transition-all duration-700" id="searchQuotaProgressBar" style="width: 80%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Metric Cards 2x2 -->
+                                <div class="grid grid-cols-2 gap-3 text-xs">
+                                    <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                                        <span class="text-[10px] text-zinc-500 font-mono block">ACCOUNT BALANCE</span>
+                                        <span class="font-extrabold text-white font-mono text-base mt-0.5 block" id="accMetricBalance">11,731 PTS</span>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                                        <span class="text-[10px] text-zinc-500 font-mono block">14-DAY OBSERVATION</span>
+                                        <span class="font-extrabold text-emerald-400 font-mono text-base mt-0.5 block flex items-center gap-1.5" id="accMetricStreak">
+                                            <i data-lucide="shield-check" class="w-4 h-4"></i> 2 / 14 Days Clean
+                                        </span>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                                        <span class="text-[10px] text-zinc-500 font-mono block">INTERVAL TIMING</span>
+                                        <span class="font-semibold text-zinc-200 mt-0.5 block" id="accMetricNextSchedule">Next run in 13 min</span>
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-black/40 border border-white/5">
+                                        <span class="text-[10px] text-zinc-500 font-mono block">SESSION STRATEGY</span>
+                                        <span class="text-orange-400 font-medium mt-0.5 block" id="accMetricNextPlan">~2 desktop searches (+6 PTS)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Natural Pacing Details -->
+                                <div class="p-3 rounded-xl bg-orange-500/5 border border-orange-500/15 flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-2">
+                                        <i data-lucide="activity" class="w-4 h-4 text-orange-400"></i>
+                                        <span class="text-zinc-300 font-mono text-[11px]">Human Jitter Pacing: <strong class="text-white">412ms &ndash; 890ms</strong></span>
+                                    </div>
+                                    <span class="text-[10px] text-zinc-400 font-mono">Simulated mouse bezier</span>
+                                </div>
+                            </div>
+
+                            <!-- RIGHT COLUMN: Radial Ring & Category Breakdown (5 Cols) -->
+                            <div class="lg:col-span-5 glass-card p-5 space-y-5 flex flex-col justify-between">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-bold text-zinc-200 flex items-center gap-2 font-mono tracking-wider text-[11px]">
+                                        <i data-lucide="pie-chart" class="w-4 h-4 text-amber-400"></i>
+                                        PROGRESS RING
+                                    </span>
+                                    <span class="font-mono text-xs text-zinc-400" id="radialRatioText">24 / 30 PTS</span>
+                                </div>
+
+                                <div class="flex items-center gap-5 my-auto">
+                                    <!-- Dynamic SVG Radial Gauge -->
+                                    <div class="relative w-24 h-24 shrink-0 flex items-center justify-center">
+                                        <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                            <path class="text-white/10" stroke-width="3.5" stroke="currentColor" fill="none"
+                                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            <path class="text-orange-500 transition-all duration-700" id="radialCircle" stroke-width="3.5" stroke-dasharray="80, 100" stroke-linecap="round" stroke="currentColor" fill="none"
+                                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        </svg>
+                                        <div class="absolute flex flex-col items-center justify-center text-center">
+                                            <span class="text-xl font-extrabold text-white font-mono leading-none" id="radialCenterVal">80%</span>
+                                            <span class="text-[9px] text-zinc-400 font-mono mt-0.5">COMPLETED</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Category Metrics -->
+                                    <div class="flex-1 space-y-2 text-xs">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-zinc-400 flex items-center gap-1.5"><i data-lucide="monitor" class="w-3.5 h-3.5 text-zinc-400"></i> Desktop Web</span>
+                                            <span class="font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded text-[11px]" id="catDesktopPts">24 / 30 PTS</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-zinc-400 flex items-center gap-1.5"><i data-lucide="smartphone" class="w-3.5 h-3.5 text-zinc-400"></i> Edge Mobile</span>
+                                            <span class="font-mono text-zinc-500 text-[11px]" id="catMobilePts">0 / 30 PTS</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-zinc-400 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Daily Sets</span>
+                                            <span class="font-mono text-emerald-400 font-bold text-[11px]" id="catDailySets">+15 Completed</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2">
+                                    <button onclick="openLiveBrowserModal()" class="w-full action-spring py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-zinc-200 border border-white/5 flex items-center justify-center gap-2">
+                                        <i data-lucide="eye" class="w-3.5 h-3.5 text-orange-400"></i>
+                                        <span>View Real-time Headless Screen</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 14-DAY OBSERVATION INTERACTIVE TIMELINE -->
+                        <div class="glass-card p-5 space-y-4">
+                            <div class="flex items-center justify-between text-xs flex-wrap gap-2">
+                                <span class="font-bold text-zinc-200 font-mono text-[11px] uppercase tracking-wider flex items-center gap-2">
+                                    <i data-lucide="calendar" class="w-4 h-4 text-orange-400"></i>
+                                    14-DAY ACCOUNT OBSERVATION HEATMAP
+                                </span>
+                                <div class="flex items-center gap-4 text-[11px] font-mono">
+                                    <span class="flex items-center gap-1.5 text-zinc-400"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Clean Execution</span>
+                                    <span class="flex items-center gap-1.5 text-zinc-400"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Review</span>
+                                    <span class="text-amber-400 font-bold" id="streakSummaryText">2 of 14 Days Clean</span>
+                                </div>
+                            </div>
+
+                            <!-- Heatmap Bar Grid -->
+                            <div class="grid grid-cols-14 gap-2 h-7 w-full" id="heatmapGrid">
+                                <!-- Days injected dynamically by JS -->
+                            </div>
+
+                            <div class="flex items-center justify-between text-[11px] text-zinc-400 pt-1 font-mono">
+                                <span id="heatmapTooltip">Hover or click any bar above to inspect day telemetry</span>
+                                <button onclick="triggerRepairFlow()" class="hover:text-white flex items-center gap-1 text-orange-400">
+                                    <i data-lucide="wrench" class="w-3 h-3"></i>
+                                    <span>Session Recovery &amp; Repair &rarr;</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- LIVE CONSOLE TERMINAL OUTPUT (Interactive Log Stream) -->
+                <div class="glass-panel p-5 space-y-3 font-mono">
+                    <div class="flex items-center justify-between border-b border-white/8 pb-3">
+                        <div class="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-wider">
+                            <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Live Cluster Execution Stream</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-zinc-400">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 live-breathe"></span>
+                            <span>Tailscale Mesh Active</span>
+                            <button onclick="clearLogs()" class="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10 text-zinc-300">Clear</button>
+                        </div>
+                    </div>
+                    <div class="bg-black/70 rounded-xl p-4 text-[11px] leading-relaxed max-h-48 overflow-y-auto space-y-1 text-zinc-300 border border-white/5" id="terminalLogs">
+                        <div class="text-zinc-500">[20:41:02] [SYSTEM] Macro R Core v2.6 engine initialized on Azure VM.</div>
+                        <div class="text-emerald-400">[20:41:03] [NET] Tailscale mesh connected &rarr; Dish Media residential exit node active (103.191.131.*).</div>
+                        <div class="text-zinc-400">[20:41:05] [FLEET] 4 accounts synced. Total balance aggregated: 27,025 PTS.</div>
+                        <div class="text-amber-400">[20:41:10] [SCHEDULER] Account 1 (Bishnu Poudel) queued for next burst window in 12 min.</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- 📺 LIVE NOVNC BROWSER STREAM MODAL -->
+    <div id="liveBrowserModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-200">
+        <div class="w-full max-w-4xl glass-panel overflow-hidden shadow-2xl border border-white/15 flex flex-col scale-95 transition-transform duration-200" id="liveBrowserBox">
+            
+            <!-- Window Titlebar -->
+            <div class="px-5 py-3 border-b border-white/10 flex items-center justify-between bg-black/50">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-3 h-3 rounded-full bg-rose-500/80 cursor-pointer" onclick="closeLiveBrowserModal()"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                    </div>
+                    <div class="h-4 w-px bg-white/10"></div>
+                    <span class="text-xs font-mono font-bold text-white flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 live-breathe"></span>
+                        <span>noVNC Headless CDP Stream &bull; Display :99 (1920x1080)</span>
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="simulateLiveSearchInModal()" class="action-spring px-3 py-1 rounded-lg bg-orange-500 text-white font-bold text-[11px] flex items-center gap-1.5">
+                        <i data-lucide="play" class="w-3 h-3 fill-white"></i>
+                        <span>Inject Search</span>
+                    </button>
+                    <button onclick="closeLiveBrowserModal()" class="p-1 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Virtual Browser Canvas -->
+            <div class="relative bg-[#0d1117] min-h-[420px] flex flex-col">
+                <!-- Browser Tab Bar -->
+                <div class="bg-[#161b22] px-4 py-2 border-b border-white/5 flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2 bg-[#0d1117] px-3 py-1 rounded-t-lg text-zinc-300 font-mono text-[11px] border-t border-x border-white/10">
+                        <i data-lucide="globe" class="w-3 h-3 text-orange-400"></i>
+                        <span id="mockUrlDisplay">https://www.bing.com/search?q=kathmandu+weather+live</span>
+                    </div>
+                    <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                        <i data-lucide="shield" class="w-3 h-3"></i>
+                        <span>CDP Natural Jitter Protected</span>
+                    </div>
+                </div>
+
+                <!-- Simulated Bing Interface -->
+                <div class="flex-1 p-8 flex flex-col items-center justify-center relative overflow-hidden" id="mockBrowserContent">
+                    <div class="w-full max-w-lg space-y-6 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-2xl font-black text-white tracking-tight">Microsoft <span class="text-orange-500">Bing</span></span>
+                            <span class="text-[10px] font-mono bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full border border-orange-500/30">Rewards Node</span>
+                        </div>
+                        <div class="w-full p-3.5 rounded-2xl bg-black/50 border border-white/15 flex items-center justify-between shadow-2xl">
+                            <div class="flex items-center gap-2.5 text-xs text-zinc-300 font-mono" id="mockSearchQueryText">
+                                <i data-lucide="search" class="w-4 h-4 text-orange-400"></i>
+                                <span>kathmandu weather live</span>
+                            </div>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">+3 PTS</span>
+                        </div>
+                        <div class="text-[11px] text-zinc-400 font-mono flex items-center justify-center gap-4">
+                            <span>User Agent: Edge / Windows 11</span>
+                            <span>&bull;</span>
+                            <span>Fingerprint: Hardware Accelerated</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Virtual Cursor -->
+                <div id="virtualCursor" class="absolute w-4 h-4 pointer-events-none transition-all duration-500 text-orange-400 drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]" style="top: 50%; left: 50%;">
+                    <i data-lucide="mouse-pointer" class="w-4 h-4 fill-orange-400"></i>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-5 py-3 border-t border-white/10 bg-black/60 flex items-center justify-between text-xs text-zinc-400 font-mono">
+                <span>Display resolution: 1920 &times; 1080 @ 60Hz</span>
+                <a href="/novnc/vnc.html" target="_blank" class="text-orange-400 hover:text-orange-300 font-bold flex items-center gap-1">
+                    <span>Open Standalone VNC Tab</span> &nearr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ➕ ADD ACCOUNT MODAL (Big Tech Enterprise Form) -->
+    <div id="addAccountModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-2xl flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-200">
+        <div class="w-full max-w-md glass-panel overflow-hidden shadow-2xl border border-white/15 p-6 space-y-5 scale-95 transition-transform duration-200" id="addAccountBox">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white">Enroll New Account Node</h3>
+                        <span class="text-[10px] text-zinc-400 font-mono">Connect to Azure Cluster</span>
+                    </div>
+                </div>
+                <button onclick="closeAddAccountModal()" class="p-1 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3.5 text-xs">
+                <div>
+                    <label class="block text-zinc-300 font-semibold mb-1">Account Display Name</label>
+                    <input id="inputAccName" type="text" placeholder="e.g. Ramesh Poudel" class="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/10 text-white outline-none focus:border-orange-500/50">
+                </div>
+                <div>
+                    <label class="block text-zinc-300 font-semibold mb-1">Microsoft Email / ID</label>
+                    <input id="inputAccEmail" type="email" placeholder="user@outlook.com" class="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/10 text-white outline-none focus:border-orange-500/50">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-zinc-300 font-semibold mb-1">Target Locale</label>
+                        <select id="inputAccLocale" class="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/10 text-white outline-none">
+                            <option value="ne">ne (Nepal / Kathmandu)</option>
+                            <option value="en-US">en-US (United States)</option>
+                            <option value="en-GB">en-GB (United Kingdom)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-zinc-300 font-semibold mb-1">Exit Gateway</label>
+                        <select class="w-full px-3 py-2 rounded-xl bg-black/50 border border-white/10 text-white outline-none">
+                            <option>Dish Media (Nepal)</option>
+                            <option>Subnet Route Direct</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-2 pt-2">
+                <button onclick="closeAddAccountModal()" class="px-4 py-2 rounded-xl text-zinc-400 hover:text-white text-xs font-semibold">Cancel</button>
+                <button onclick="submitNewAccount()" class="action-spring px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold">
+                    Enroll Account
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CORE INTERACTIVE JAVASCRIPT ENGINE -->
+    <script>
+        // Accounts Fleet Dataset
+        var fleet = {
+            1: {
+                id: 1,
+                name: "Account 1 — Bishnu Poudel",
+                shortName: "Bishnu Poudel",
+                balance: 11731,
+                searchCurrent: 24,
+                searchMax: 30,
+                streakClean: 2,
+                streakMax: 14,
+                locale: "ne • Asia/Kathmandu",
+                nextSchedule: "Next run in 12 min 40s",
+                nextPlan: "~2 desktop searches (+6 PTS)",
+                desktop: "24 / 30 PTS",
+                mobile: "0 / 30 PTS",
+                dailySets: "+15 Completed",
+                status: "CONNECTED • ACTIVE",
+                heatmap: [
+                    { day: 1, status: 'review', note: 'Session interrupted' },
+                    { day: 2, status: 'clean', note: '30/30 pts credited' },
+                    { day: 3, status: 'idle', note: 'Cooldown rest' },
+                    { day: 4, status: 'clean', note: '30/30 pts credited' },
+                    { day: 5, status: 'clean', note: '30/30 pts credited' },
+                    { day: 6, status: 'clean', note: '30/30 pts credited' },
+                    { day: 7, status: 'clean', note: '30/30 pts credited' },
+                    { day: 8, status: 'clean', note: '30/30 pts credited' },
+                    { day: 9, status: 'clean', note: '30/30 pts credited' },
+                    { day: 10, status: 'review', note: 'CAPTCHA solved naturally' },
+                    { day: 11, status: 'idle', note: 'No task queued' },
+                    { day: 12, status: 'clean', note: '30/30 pts credited' },
+                    { day: 13, status: 'clean', note: '30/30 pts credited' },
+                    { day: 14, status: 'active', note: 'Today in progress (24/30)' }
+                ]
+            },
+            2: {
+                id: 2,
+                name: "Account 2 — Aayush Sharma",
+                shortName: "Aayush Sharma",
+                balance: 5840,
+                searchCurrent: 30,
+                searchMax: 30,
+                streakClean: 14,
+                streakMax: 14,
+                locale: "ne • Asia/Kathmandu",
+                nextSchedule: "Completed for today",
+                nextPlan: "All daily targets satisfied",
+                desktop: "30 / 30 PTS",
+                mobile: "30 / 30 PTS",
+                dailySets: "+15 Completed",
+                status: "CONNECTED • COMPLETE",
+                heatmap: [
+                    { day: 1, status: 'clean' }, { day: 2, status: 'clean' }, { day: 3, status: 'clean' },
+                    { day: 4, status: 'clean' }, { day: 5, status: 'clean' }, { day: 6, status: 'clean' },
+                    { day: 7, status: 'clean' }, { day: 8, status: 'clean' }, { day: 9, status: 'clean' },
+                    { day: 10, status: 'clean' }, { day: 11, status: 'clean' }, { day: 12, status: 'clean' },
+                    { day: 13, status: 'clean' }, { day: 14, status: 'clean' }
+                ]
+            },
+            3: {
+                id: 3,
+                name: "Account 3 — Sita Poudel",
+                shortName: "Sita Poudel",
+                balance: 4910,
+                searchCurrent: 15,
+                searchMax: 30,
+                streakClean: 7,
+                streakMax: 14,
+                locale: "ne • Asia/Kathmandu",
+                nextSchedule: "Next run in 45 min",
+                nextPlan: "~5 mobile searches (+15 PTS)",
+                desktop: "15 / 30 PTS",
+                mobile: "0 / 30 PTS",
+                dailySets: "+10 Completed",
+                status: "CONNECTED • SCHEDULED",
+                heatmap: [
+                    { day: 1, status: 'clean' }, { day: 2, status: 'clean' }, { day: 3, status: 'clean' },
+                    { day: 4, status: 'clean' }, { day: 5, status: 'clean' }, { day: 6, status: 'clean' },
+                    { day: 7, status: 'clean' }, { day: 8, status: 'idle' }, { day: 9, status: 'clean' },
+                    { day: 10, status: 'clean' }, { day: 11, status: 'clean' }, { day: 12, status: 'clean' },
+                    { day: 13, status: 'clean' }, { day: 14, status: 'active' }
+                ]
+            },
+            4: {
+                id: 4,
+                name: "Account 4 — Rohan Thapa",
+                shortName: "Rohan Thapa",
+                balance: 4544,
+                searchCurrent: 0,
+                searchMax: 30,
+                streakClean: 12,
+                streakMax: 14,
+                locale: "ne • Asia/Kathmandu",
+                nextSchedule: "Next run in 1 hr 12 min",
+                nextPlan: "Full daily cycle (+30 PTS)",
+                desktop: "0 / 30 PTS",
+                mobile: "0 / 30 PTS",
+                dailySets: "Queued",
+                status: "CONNECTED • IDLE",
+                heatmap: [
+                    { day: 1, status: 'clean' }, { day: 2, status: 'clean' }, { day: 3, status: 'clean' },
+                    { day: 4, status: 'clean' }, { day: 5, status: 'clean' }, { day: 6, status: 'clean' },
+                    { day: 7, status: 'clean' }, { day: 8, status: 'clean' }, { day: 9, status: 'clean' },
+                    { day: 10, status: 'clean' }, { day: 11, status: 'clean' }, { day: 12, status: 'clean' },
+                    { day: 13, status: 'idle' }, { day: 14, status: 'idle' }
+                ]
+            }
+        };
+
+        var currentAccountId = 1;
+        var isEngineRunning = true;
+        var totalPointsGlobal = 27025;
+        var todayPointsGlobal = 69;
+
+        // Initialize Lucide Icons & UI
+        window.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            renderActiveAccount(1);
+            setupKeyboardShortcuts();
+            startLiveClock();
+        });
+
+        // Big Tech Theme Switcher (Apple / Microsoft / Google)
+        function setTheme(theme) {
+            document.body.className = '';
+            document.body.classList.add('theme-' + theme, 'flex', 'h-screen', 'overflow-hidden', 'antialiased', 'selection:bg-orange-500/30', 'selection:text-orange-200');
+            
+            ['apple', 'microsoft', 'google'].forEach(function(t) {
+                var btn = document.getElementById('themeBtn-' + t);
+                if (t === theme) {
+                    btn.classList.add('active');
+                    btn.classList.remove('text-zinc-400');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('text-zinc-400');
+                }
+            });
+
+            var label = theme === 'apple' ? 'Apple visionOS Liquid Glass' : (theme === 'microsoft' ? 'Microsoft Fluent 2 Mica' : 'Google DeepMind Ops');
+            showToast('Design Lens Activated', label);
+        }
+
+        // Render Account View
+        function selectAccount(id) {
+            currentAccountId = id;
+            for (var i = 1; i <= 4; i++) {
+                var tab = document.getElementById('accTab-' + i);
+                if (tab) {
+                    if (i === id) {
+                        tab.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-white/10 text-white shadow-sm";
+                        tab.querySelector('span').className = "w-2 h-2 rounded-full bg-orange-400";
+                    } else {
+                        tab.className = "px-4 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white transition-all flex items-center gap-2";
+                        tab.querySelector('span').className = "w-2 h-2 rounded-full bg-zinc-600";
+                    }
+                }
+            }
+            renderActiveAccount(id);
+        }
+
+        function renderActiveAccount(id) {
+            var acc = fleet[id];
+            if (!acc) return;
+
+            document.getElementById('activeAccountAvatar').innerText = acc.id;
+            document.getElementById('activeAccountName').innerText = acc.name;
+            document.getElementById('activeAccountLocale').innerText = acc.locale;
+            document.getElementById('activeAccountPoints').innerText = acc.balance.toLocaleString() + ' PTS Balance';
+            document.getElementById('activeAccountStreakLabel').innerText = 'Clean Streak: ' + acc.streakClean + ' / ' + acc.streakMax + ' Days';
+            document.getElementById('activeAccountStatus').innerText = acc.status;
+
+            // Search progress
+            var pct = Math.round((acc.searchCurrent / acc.searchMax) * 100);
+            document.getElementById('searchQuotaDisplay').innerHTML = acc.searchCurrent + ' <span class="text-zinc-500 font-normal">/ ' + acc.searchMax + ' PTS</span>';
+            document.getElementById('searchQuotaProgressBar').style.width = pct + '%';
+
+            // Metrics
+            document.getElementById('accMetricBalance').innerText = acc.balance.toLocaleString() + ' PTS';
+            document.getElementById('accMetricStreak').innerHTML = '<i data-lucide="shield-check" class="w-4 h-4"></i> ' + acc.streakClean + ' / ' + acc.streakMax + ' Days Clean';
+            document.getElementById('accMetricNextSchedule').innerText = acc.nextSchedule;
+            document.getElementById('accMetricNextPlan').innerText = acc.nextPlan;
+
+            // Radial
+            document.getElementById('radialRatioText').innerText = acc.searchCurrent + ' / ' + acc.searchMax + ' PTS';
+            document.getElementById('radialCenterVal').innerText = pct + '%';
+            document.getElementById('radialCircle').setAttribute('stroke-dasharray', pct + ', 100');
+
+            // Categories
+            document.getElementById('catDesktopPts').innerText = acc.desktop;
+            document.getElementById('catMobilePts').innerText = acc.mobile;
+            document.getElementById('catDailySets').innerText = acc.dailySets;
+
+            // Heatmap
+            renderHeatmap(acc.heatmap);
+            lucide.createIcons();
+        }
+
+        function renderHeatmap(days) {
+            var container = document.getElementById('heatmapGrid');
+            container.innerHTML = '';
+            days.forEach(function(d, index) {
+                var el = document.createElement('div');
+                var bg = 'bg-zinc-800';
+                if (d.status === 'clean') bg = 'bg-orange-500 hover:bg-orange-400';
+                if (d.status === 'review') bg = 'bg-rose-500 hover:bg-rose-400';
+                if (d.status === 'active') bg = 'bg-orange-500/40 border border-orange-400 live-breathe';
+
+                el.className = bg + ' rounded-lg h-full transition-all cursor-pointer';
+                el.title = 'Day ' + (index + 1) + ': ' + (d.note || d.status);
+                el.onmouseenter = function() {
+                    document.getElementById('heatmapTooltip').innerHTML = '<strong>Day ' + (index + 1) + ':</strong> ' + (d.note || d.status);
+                };
+                container.appendChild(el);
+            });
+        }
+
+        // Live Single Account Run Simulation
+        function runSingleAccountSession() {
+            var acc = fleet[currentAccountId];
+            var btn = document.getElementById('runSingleAccountBtnText');
+            btn.innerText = 'Executing Natural Searches...';
+            
+            showToast('Session Dispatched', 'Simulating natural Bezier mouse events for ' + acc.shortName);
+            appendLog('[DISPATCH] Session triggered for ' + acc.name + ' via Dish Media exit.');
+
+            setTimeout(function() {
+                if (acc.searchCurrent < acc.searchMax) {
+                    acc.searchCurrent += 3;
+                    acc.balance += 3;
+                    totalPointsGlobal += 3;
+                    todayPointsGlobal += 3;
+
+                    // Update globals
+                    document.getElementById('fleetTotalPoints').innerText = totalPointsGlobal.toLocaleString();
+                    document.getElementById('todayPointsGathered').innerText = todayPointsGlobal;
+                    var rem = 105 - todayPointsGlobal;
+                    document.getElementById('remainingPointsText').innerText = '+' + rem + ' PTS remaining for today';
+                    document.getElementById('todayProgressBar').style.width = Math.min(100, Math.round((todayPointsGlobal / 105) * 100)) + '%';
+
+                    appendLog('[CREDIT] +3 PTS credited! Query: "nepal tourist visa requirements". Balance: ' + acc.balance + ' PTS.');
+                    renderActiveAccount(currentAccountId);
+                    showToast('Points Credited (+3 PTS)', acc.shortName + ' balance now ' + acc.balance + ' PTS');
+                } else {
+                    appendLog('[INFO] Daily quota already satisfied for ' + acc.shortName);
+                    showToast('Target Achieved', acc.shortName + ' has reached daily quota (30/30).');
+                }
+                btn.innerText = 'Run Session Now';
+            }, 1800);
+        }
+
+        // Dispatch All Pending
+        function triggerImmediateRunAll() {
+            showToast('Cluster Dispatched', 'Running stealth bursts sequentially across all active nodes.');
+            appendLog('[CLUSTER] Dispatched parallel batch run across accounts 1-4.');
+            runSingleAccountSession();
+        }
+
+        // Pause / Resume Toggle
+        function toggleAutomationState() {
+            isEngineRunning = !isEngineRunning;
+            var btn = document.getElementById('globalPauseBtn');
+            var text = document.getElementById('globalPauseText');
+            var icon = document.getElementById('globalPauseIcon');
+            var status = document.getElementById('headerEngineStatus');
+            var banner = document.getElementById('smartBanner');
+
+            if (isEngineRunning) {
+                text.innerText = "Pause Automation";
+                icon.setAttribute('data-lucide', 'pause');
+                status.innerText = "Automation Engine Active";
+                banner.className = "glass-panel p-4 sm:p-5 flex items-center justify-between flex-wrap gap-4 border-amber-500/20 bg-gradient-to-r from-orange-500/10 via-amber-500/5 to-transparent transition-all";
+                showToast('Engine Resumed', 'Scheduled interval timers active.');
+                appendLog('[ENGINE] Automation engine resumed.');
+            } else {
+                text.innerText = "Resume Automation";
+                icon.setAttribute('data-lucide', 'play');
+                status.innerText = "Automation Engine Suspended";
+                banner.className = "glass-panel p-4 sm:p-5 flex items-center justify-between flex-wrap gap-4 border-rose-500/30 bg-rose-950/20 transition-all";
+                showToast('Engine Paused', 'All background execution safely suspended.');
+                appendLog('[ENGINE] Automation engine suspended by operator.');
+            }
+            lucide.createIcons();
+        }
+
+        // Live Log Appender
+        function appendLog(msg) {
+            var term = document.getElementById('terminalLogs');
+            var time = new Date().toLocaleTimeString();
+            var line = document.createElement('div');
+            line.innerHTML = '<span class="text-zinc-500">[' + time + ']</span> ' + msg;
+            term.appendChild(line);
+            term.scrollTop = term.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('terminalLogs').innerHTML = '<div class="text-zinc-500">[CONSOLE CLEARED]</div>';
+        }
+
+        // Toast Feedback System
+        function showToast(title, msg) {
+            var hud = document.getElementById('toastHUD');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = msg;
+
+            hud.classList.remove('translate-y-[-120%]', 'opacity-0');
+            hud.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(function() {
+                hud.classList.remove('translate-y-0', 'opacity-100');
+                hud.classList.add('translate-y-[-120%]', 'opacity-0');
+            }, 3000);
+        }
+
+        // Spotlight / Raycast Command Palette
+        function toggleCommandPalette(open) {
+            var p = document.getElementById('commandPalette');
+            var box = document.getElementById('paletteBox');
+            if (open) {
+                p.classList.remove('opacity-0', 'pointer-events-none');
+                p.classList.add('opacity-100');
+                box.classList.remove('scale-95');
+                box.classList.add('scale-100');
+                setTimeout(function() { document.getElementById('paletteInput').focus(); }, 50);
+            } else {
+                p.classList.remove('opacity-100');
+                p.classList.add('opacity-0', 'pointer-events-none');
+                box.classList.remove('scale-100');
+                box.classList.add('scale-95');
+            }
+        }
+
+        function executeCommand(cmd) {
+            toggleCommandPalette(false);
+            if (cmd === 'run_all') triggerImmediateRunAll();
+            if (cmd === 'select_1') selectAccount(1);
+            if (cmd === 'select_2') selectAccount(2);
+            if (cmd === 'live_screen') openLiveBrowserModal();
+            if (cmd === 'toggle_pause') toggleAutomationState();
+        }
+
+        // Keyboard Shortcuts (Ctrl+K, Cmd+K, Escape)
+        function setupKeyboardShortcuts() {
+            window.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    toggleCommandPalette(true);
+                }
+                if (e.key === 'Escape') {
+                    toggleCommandPalette(false);
+                    closeLiveBrowserModal();
+                    closeAddAccountModal();
+                }
+            });
+        }
+
+        // Live Virtual Browser Modal
+        function openLiveBrowserModal() {
+            var m = document.getElementById('liveBrowserModal');
+            var b = document.getElementById('liveBrowserBox');
+            m.classList.remove('opacity-0', 'pointer-events-none');
+            b.classList.remove('scale-95');
+            b.classList.add('scale-100');
+            lucide.createIcons();
+        }
+
+        function closeLiveBrowserModal() {
+            var m = document.getElementById('liveBrowserModal');
+            var b = document.getElementById('liveBrowserBox');
+            m.classList.add('opacity-0', 'pointer-events-none');
+            b.classList.remove('scale-100');
+            b.classList.add('scale-95');
+        }
+
+        function simulateLiveSearchInModal() {
+            var cursor = document.getElementById('virtualCursor');
+            var q = document.getElementById('mockSearchQueryText');
+            var queries = [
+                "everest helicopter tour cost 2026",
+                "pokhara weather forecast 14 days",
+                "best nepali tea orthodox black",
+                "kathmandu valley heritage monuments"
+            ];
+            var randomQ = queries[Math.floor(Math.random() * queries.length)];
+
+            cursor.style.top = "40%";
+            cursor.style.left = "45%";
+
+            setTimeout(function() {
+                cursor.style.top = "52%";
+                cursor.style.left = "50%";
+                q.innerHTML = '<i data-lucide="search" class="w-4 h-4 text-orange-400"></i><span>' + randomQ + '</span>';
+                document.getElementById('mockUrlDisplay').innerText = "https://www.bing.com/search?q=" + encodeURIComponent(randomQ);
+                lucide.createIcons();
+                runSingleAccountSession();
+            }, 600);
+        }
+
+        // Add Account Modal
+        function openAddAccountModal() {
+            var m = document.getElementById('addAccountModal');
+            var b = document.getElementById('addAccountBox');
+            m.classList.remove('opacity-0', 'pointer-events-none');
+            b.classList.remove('scale-95');
+            b.classList.add('scale-100');
+        }
+
+        function closeAddAccountModal() {
+            var m = document.getElementById('addAccountModal');
+            var b = document.getElementById('addAccountBox');
+            m.classList.add('opacity-0', 'pointer-events-none');
+            b.classList.remove('scale-100');
+            b.classList.add('scale-95');
+        }
+
+        function submitNewAccount() {
+            var name = document.getElementById('inputAccName').value.trim();
+            if (!name) {
+                alert('Please enter an account name');
+                return;
+            }
+            closeAddAccountModal();
+            showToast('Account Node Registered', name + ' enrolled into residential proxy cluster.');
+            appendLog('[ENROLL] New account ' + name + ' added to cluster fleet.');
+        }
+
+        function triggerRepairFlow() {
+            showToast('Repair Diagnostic Initiated', 'Running session integrity check on Account ' + currentAccountId);
+            appendLog('[REPAIR] CDP session tokens refreshed. All cookies valid.');
+        }
+
+        // Live Clock & Countdown
+        function startLiveClock() {
+            var sec = 760;
+            setInterval(function() {
+                if (sec > 0 && isEngineRunning) {
+                    sec--;
+                    var m = Math.floor(sec / 60);
+                    var s = sec % 60;
+                    document.getElementById('bannerCountdown').innerText = 'in ' + m + ' min ' + (s < 10 ? '0' : '') + s + 's';
+                }
+            }, 1000);
+        }
+
+        // Tab Switching for Sidebar
+        function switchDeckTab(tab) {
+            ['fleet', 'telemetry', 'stealth', 'console'].forEach(function(t) {
+                var el = document.getElementById('nav-' + t);
+                if (t === tab) {
+                    el.className = "w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold bg-white/10 text-white border-l-2 border-orange-500 transition-colors";
+                } else {
+                    el.className = "w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors";
+                }
+            });
+            showToast('View Filtered', 'Showing ' + tab.toUpperCase() + ' perspective');
+        }
+    </script>
+</body>
+</html>
